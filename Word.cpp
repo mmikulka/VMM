@@ -19,7 +19,7 @@ Word Address::displacement()
     Word temp;
     return temp;
 }
-Word fram()
+Word frame()
 {
     Word temp;
     return temp;

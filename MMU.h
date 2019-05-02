@@ -19,8 +19,8 @@ struct TLB
 class MMU
 {
 public:
-    MMU();
-    MMU(MMU&);
+    MMU() = delete;
+    MMU(MMU&) = delete;
     MMU instance();
     void clearTLB();
     int pageAccesses();
@@ -29,6 +29,9 @@ public:
     int TLBFaults();
     template <typename t>
     void read(t &addr);
+
+    int return_test();
+
 private:
     int pageAccessCounts_;
     int pageInFaults_;

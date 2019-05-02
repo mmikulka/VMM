@@ -6,12 +6,12 @@
 #include "MMU.h"
 
 
-MMU::MMU(){}
-
-MMU::MMU(MMU&){}
-
 MMU MMU::instance()
 {
+    pageAccessCounts_ = 0;
+    pageInFaults_ = 0;
+    tlbAccessCount_ = 0;
+    tlbFaults_ = 0;
     return *this; // dummy return
 }
 

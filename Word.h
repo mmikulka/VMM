@@ -16,11 +16,13 @@ struct Word
     u_int32_t value_;
 };
 
-struct Address
+
+
+struct Address: Word
 {
     Word address();
     Word displacement();
-    Word fram();
+    Word frame();
     Word page();
 };
 
