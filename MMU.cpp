@@ -6,13 +6,21 @@
 #include "MMU.h"
 
 
-MMU MMU::instance()
+/*MMU MMU::instance()
 {
     pageAccessCounts_ = 0;
     pageInFaults_ = 0;
     tlbAccessCount_ = 0;
     tlbFaults_ = 0;
     return *this; // dummy return
+}*/
+
+MMU::MMU()
+{
+    pageAccessCounts_ = 0;
+    pageInFaults_ = 0;
+    tlbAccessCount_ = 0;
+    tlbFaults_ = 0;
 }
 
 void MMU::clearTLB(){}

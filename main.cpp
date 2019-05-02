@@ -28,15 +28,17 @@ int main(int argc, const char * argv[]) {
         u_int32_t temp;
         Address logAddr;
         ifstream inFile;
-        MMU MemManagerUnit;
+        //MMU MemManagerUnit;
         inFile.open(argv[1],ios::out);
 
         while (inFile >> temp)
         {
             logAddr.value_ = temp;
-            MemManagerUnit.read(logAddr);
+           // MemManagerUnit.read(logAddr);
         }
 
     }
+
+    cout << "test" << endl;
     return 0;
 }
