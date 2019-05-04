@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 #include "Word.h"
 
 class BackingStore
@@ -22,6 +23,6 @@ public:
     
     ~BackingStore();
 private:
-    std::ifstream file;
+    std::fstream file;
 };
 #endif /* BackingStore_hpp */

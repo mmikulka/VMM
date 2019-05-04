@@ -21,12 +21,14 @@ MMU::MMU()
     pageInFaults_ = 0;
     tlbAccessCount_ = 0;
     tlbFaults_ = 0;
-    tlb_.numEntries = 0;
+    tlb_.pageNum.fill(-1);
+    tlb_.FrameNum.fill(-1);
 }
 
 void MMU::clearTLB()
 {
-    tlb_.numEntries = 0;
+    tlb_.pageNum.fill(-1);
+    tlb_.FrameNum.fill(-1);
 }
 
 int MMU::pageAccesses()
@@ -49,8 +51,9 @@ int MMU::TLBFaults()
     return tlbFaults_;
 }
 
-template <typename t>
-void MMU::read(const t &addr)
+void MMU::read(Address &addr) // translate address to info
 {
-
+    //get page number from address info
+    //see if page is in Page table
+    //if not we receive a page fault and  page in from backing store
 }

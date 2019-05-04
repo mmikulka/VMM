@@ -28,13 +28,14 @@ int main(int argc, const char * argv[]) {
         u_int32_t temp;
         Address logAddr;
         ifstream inFile;
-        MMU * MemManagerUnit = new MMU();
+        //MMU * MemManagerUnit = new MMU();
         inFile.open(argv[1],ios::out);
 
         while (inFile >> temp)
         {
             logAddr.value_ = temp;
-            MemManagerUnit->read(logAddr);
+            //MemManagerUnit->read(logAddr);
+            cout << logAddr.value_;
         }
 
     }

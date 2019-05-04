@@ -13,7 +13,7 @@ BackingStore::BackingStore()
     file.open("addresses.txt");
 }
 
-void BackingStore::read(const &Word)
+void BackingStore::read(const Word&)
 {
 }
 
