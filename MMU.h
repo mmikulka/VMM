@@ -12,7 +12,9 @@
 
 struct TLB
 {
-    int tlb[16] = {0};
+    int pageNum[16] = {0};
+    int FrameNumber[16] = {0};
+    int numEntries;
 };
 
 
@@ -20,7 +22,7 @@ class MMU
 {
 public:
     MMU();//=delete;
-    MMU(MMU&); // = delete;
+    //MMU(MMU&); // = delete;
     //MMU instance();
     void clearTLB();
     int pageAccesses();
@@ -28,7 +30,7 @@ public:
     int TLBAccesses();
     int TLBFaults();
     template <typename t>
-    void read(t &addr);
+    void read(const t &addr);
 
     u_int32_t return_test();
 

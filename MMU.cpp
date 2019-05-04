@@ -21,9 +21,13 @@ MMU::MMU()
     pageInFaults_ = 0;
     tlbAccessCount_ = 0;
     tlbFaults_ = 0;
+    tlb_.numEntries = 0;
 }
 
-void MMU::clearTLB(){}
+void MMU::clearTLB()
+{
+    tlb_.numEntries = 0;
+}
 
 int MMU::pageAccesses()
 {
@@ -45,8 +49,8 @@ int MMU::TLBFaults()
     return tlbFaults_;
 }
 
-template <typename T>
-void MMU::read(T &addr)
+template <typename t>
+void MMU::read(const t &addr)
 {
-    
+
 }

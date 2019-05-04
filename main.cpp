@@ -8,10 +8,10 @@
 
 #include <iostream>
 #include <fstream>
-#include "backingStore.h"
-#include "MemoryManager.h"
+//#include "backingStore.h"
+//#include "MemoryManager.h"
 #include "MMU.h"
-#include "RAM.h"
+//#include "RAM.h"
 #include "Word.h"
 
 using namespace std;
@@ -28,13 +28,13 @@ int main(int argc, const char * argv[]) {
         u_int32_t temp;
         Address logAddr;
         ifstream inFile;
-        //MMU MemManagerUnit;
+        MMU * MemManagerUnit = new MMU();
         inFile.open(argv[1],ios::out);
 
         while (inFile >> temp)
         {
             logAddr.value_ = temp;
-           // MemManagerUnit.read(logAddr);
+            MemManagerUnit->read(logAddr);
         }
 
     }
