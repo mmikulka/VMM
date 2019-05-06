@@ -8,12 +8,19 @@
 
 #include "RAM.h"
 
-Ram::Ram()
+RAM::RAM()
 {
     
 }
 
 
-void Ram::read()
+Word RAM::read(unsigned frameNum)
 {
+    statuses[frameNum].accessed = true;
+    return frames[frameNum];
+}
+
+void RAM::addFrame(const Word &Item, unsigned FrameNum)
+{
+    
 }

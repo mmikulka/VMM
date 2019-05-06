@@ -19,7 +19,7 @@ class BackingStore
 public:
     BackingStore();
     
-    void read(const Word&);
+    void read(Word&);
     
     ~BackingStore();
 private:

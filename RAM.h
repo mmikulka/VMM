@@ -10,24 +10,24 @@
 #define RAM_hpp
 
 #include <stdio.h>
+#include <array>
 #include "Word.h"
 
 struct Status
 {
     bool accessed = false;
-    bool dirty = true;
+    bool dirty = false;
 };
 
-class Ram
+class RAM
 {
 public:
-    Ram();
-    void read();
+    RAM();
+    Word read(unsigned frameNum);
+    void addFrame(const Word &Item, unsigned FrameNum);
 private:
-    Word items[256];
-    Status Statuses[256];
+    static std::array<Word, 256> frames;
+    static std::array<Status, 256> statuses;
 };
-
-
 
 #endif /* RAM_hpp */

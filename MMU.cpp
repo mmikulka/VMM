@@ -53,6 +53,7 @@ int MMU::TLBFaults()
 
 void MMU::read(Address &addr) // translate address to info
 {
+  Word pageNum = addr.page();
     //get page number from address info
     //see if page is in Page table
     //if not we receive a page fault and  page in from backing store

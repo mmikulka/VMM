@@ -10,11 +10,12 @@
 
 BackingStore::BackingStore()
 {
-    file.open("addresses.txt");
+    file.open("backingstore.bin");
 }
 
-void BackingStore::read(const Word&)
+void BackingStore::read(Word&)
 {
+    
 }
 
 BackingStore::~BackingStore()

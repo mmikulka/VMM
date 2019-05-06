@@ -1,21 +1,22 @@
 //
 //  MMU.hpp
-//  
+//
 //
 //
 
-#ifndef MMU_hpp
-#define MMU_hpp
+#ifndef MMU_h
+#define MMU_h
 
 #include <stdio.h>
 #include "Word.h"
 #include "MemoryManager.h"
 #include <array>
+#include "PCB.h"
 
 struct TLB
 {
-    std:: array<int,16> pageNum = {0};
-    std::array <int, 16> FrameNum = {0};
+    std:: array<int,16> pageNum;
+    std::array <int, 16> FrameNum;
 };
 
 
@@ -30,18 +31,18 @@ public:
     int pageFaults();
     int TLBAccesses();
     int TLBFaults();
-    
+
     void read(Address &addr);
 
     u_int32_t return_test();
 
 private:
-    int pageAccessCounts_;
-    int pageInFaults_;
-    int tlbAccessCount_;
-    int tlbFaults_;
-    TLB tlb_;
-    
+    static int pageAccessCounts_;
+    static int pageInFaults_;
+    static int tlbAccessCount_;
+    static int tlbFaults_;
+    static TLB tlb_;
+
     struct PageFault
     {
         PageFault();
@@ -51,4 +52,4 @@ private:
 
 
 
-#endif /* MMU_hpp */
+#endif /* MMU_h */

@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <queue>
 #include "Word.h"
+#include "BackingStore.h"
+#include "RAM.h"
 
 class MemoryManager
 {
@@ -20,7 +22,7 @@ public:
     void pageIn(Word & item);
     void read(Word & pageNumber);
 private:
-    std::queue<Word> freeFrames;
+    static std::queue<unsigned> freeFrames;
 };
 
 #endif /* MemoryManager_hpp */
