@@ -10,10 +10,8 @@
 #include <stdio.h>
 #include "Word.hpp"
 #include "MemoryManager.hpp"
-#include "MemoryManager.cpp"
 #include <array>
 #include "PCB.hpp"
-#include "PCB.cpp"
 
 struct TLB
 {
@@ -33,6 +31,7 @@ public:
     int pageFaults();
     int TLBAccesses();
     int TLBFaults();
+	
 
     unsigned read(Address &addr);
 

@@ -33,6 +33,8 @@ void MemoryManager::pageIn(Address & addr)
     PCB::addFrame(pageNum, frameNum);
 }
 
+std::queue<unsigned> MemoryManager::freeFrames;
+
 /*
 TODO:
 

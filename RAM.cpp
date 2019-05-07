@@ -31,3 +31,6 @@ void RAM::addFrame(const Word &item, unsigned frameNum)
 {
     frames[FrameNum] = NULL; 
 }*/
+
+std::array<Word, 256> RAM::frames;
+std::array<Status, 256> RAM::statuses;

@@ -11,15 +11,13 @@
 //#include "backingStore.h"
 //#include "MemoryManager.h"
 #include "MMU.hpp"
-#include "MMU.cpp"
 //#include "RAM.h"
 #include "Word.hpp"
-#include "Word.cpp"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    if(argc < 1)
+    if(argc < 2)
     {
         cout << "You put in the wrong amount of files" << std::endl;
         return 0;
@@ -27,7 +25,7 @@ int main(int argc, const char * argv[]) {
     else
     {
 
-        u_int32_t temp;
+        uint32_t temp;
         Address logAddr;
         ifstream inFile;
         MMU MemManagerUnit;

@@ -21,3 +21,5 @@ unsigned PCB::findFrame(const Word &pageNum)
     }
     return 256;
 }
+
+std::array <PageTableEntry, 256> PCB::pageTable;

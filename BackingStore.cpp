@@ -22,7 +22,7 @@ Word BackingStore::read(Address & addr)
 
     file.seekg(pageNum.value_);
 
-    file.read(item.value_, std::ios::out);
+    file >> item.value_;
 
     return item;
 }
