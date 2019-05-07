@@ -8,13 +8,14 @@
 #define Word_hpp
 
 #include <stdio.h>
+#include <stdint.h>
 
 struct Word
 {
     public:
-    u_int32_t value_;
+    uint32_t value_;
 
-    u_int32_t frame;
+    uint32_t frame;
 
 };
 
@@ -23,7 +24,7 @@ struct Word
 struct Address: Word
 {
     public:
-    u_int32_t address();
+    uint32_t address();
     Word displacement();
     Word frame();
     Word page();

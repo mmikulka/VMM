@@ -14,9 +14,17 @@ BackingStore::BackingStore()
     file.open("backingstore.bin");
 }
 
-void BackingStore::read(Word& pagenumber)
+Word BackingStore::read(Address & addr)
 {
-    
+    Word item;
+
+    Word pageNum = addr.page();
+
+    file.seekg(pageNum.value_);
+
+    file.read(item.value_, std::ios::out);
+
+    return item;
 }
 
 BackingStore::~BackingStore()

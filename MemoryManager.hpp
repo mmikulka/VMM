@@ -14,13 +14,14 @@
 #include "Word.hpp"
 #include "BackingStore.hpp"
 #include "RAM.hpp"
+#include "PCB.hpp"
 
 class MemoryManager
 {
 public:
     MemoryManager();
-    void pageIn(Word & item);
-    void read(Word & pageNumber);
+    void pageIn(Address & item);
+   // void read(Address & pageNumber);
 private:
     static std::queue<unsigned> freeFrames;
 };

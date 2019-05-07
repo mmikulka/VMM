@@ -9,10 +9,10 @@
 #include "Word.hpp"
 
 
-u_int32_t Address::address()
+uint32_t Address::address()
 {
     /*
-        not much is done here, this is just holding the 
+        not much is done here, this is just holding the
         address
     */
     return value_;
@@ -30,7 +30,8 @@ Word Address::displacement()
 }
 Word Address::frame()
 {
-    Word temp={(value_>>8)&255};
+    Word temp;
+    temp.value_= ((value_>>8)&255);
 
     return temp;
 }
