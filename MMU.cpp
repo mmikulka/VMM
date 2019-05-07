@@ -51,18 +51,27 @@ int MMU::TLBFaults()
     return tlbFaults_;
 }
 
-void MMU::read(Address &addr) // translate address to info
+unsigned MMU::read(Address &addr) // translate address to info
 {
   Word pageNum = addr.page();
-  unsigned frameNum - PCB::findFrame(pageNum);
+  unsigned frameNum = PCB::findFrame(pageNum);
   if (frameNum > 255)
     {
-         RAM::read(f)
+         RAM::read(frameNum);
+        ++pageAccessCounts_;
     }
     else
     {
         MemoryManager mM;
+        mM.pageIn(addr);
+        frameNum = PCB::findFrame(pageNum);
+        RAM::read(frameNum);
+        ++pageInFaults_;
     }
-    //see if page is in Page table
-    //if not we receive a page fault and  page in from backing store
+    return frameNum;
 }
+/*
+TODO:
+
+implement TLB 
+*/

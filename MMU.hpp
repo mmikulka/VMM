@@ -34,7 +34,7 @@ public:
 
     void read(Address &addr);
 
-    u_int32_t return_test();
+    //u_int32_t return_test();
 
 private:
     static int pageAccessCounts_;

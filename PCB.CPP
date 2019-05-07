@@ -7,9 +7,9 @@ PCB::PCB()
     
 }
 
-Word PCB::addframe(const Word &pageNumber, const Word &frameNum)
+void PCB::addFrame(const Word &pageNumber, const unsigned &frameNum)
 {
-    return frameNum;
+    //TBC
 }
 
 unsigned PCB::findFrame(const Word &pageNum)
@@ -19,5 +19,5 @@ unsigned PCB::findFrame(const Word &pageNum)
     {
         return temp.frameNumber;
     }
-    return 500;
+    return 256;
 }

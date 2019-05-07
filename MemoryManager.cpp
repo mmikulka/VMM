@@ -17,10 +17,11 @@ MemoryManager::MemoryManager()
     }
 }
 
-void MemoryManager::pageIn(Word & item)
+void MemoryManager::pageIn(Address & addr)
 {
+    Word pageNum = addr.page();
     BackingStore back;
-    back.read(item);
+    Word item = back.read(addr);
     unsigned frameNum;
     if (freeFrames.size() > 0)
     {
@@ -29,9 +30,16 @@ void MemoryManager::pageIn(Word & item)
     }
     RAM ram;
     ram.addFrame(item, frameNum);
+    PCB::addFrame(pageNum, frameNum);
 }
 
-void MemoryManager::read(Word & pageNumber)
+/*
+TODO:
+
+Add PRA to pageIn
+*/
+
+/*void MemoryManager::read(Address & pageNumber)
 {
 
-}
+}*/
