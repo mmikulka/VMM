@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <array>
-#include "Word.h"
+#include "Word.hpp"
 
 struct Status
 {
@@ -23,8 +23,9 @@ class RAM
 {
 public:
     RAM();
-    Word read(unsigned frameNum);
+    static Word read(unsigned frameNum);
     void addFrame(const Word &Item, unsigned FrameNum);
+    void deleteFrame(unsigned FrameNum);
 private:
     static std::array<Word, 256> frames;
     static std::array<Status, 256> statuses;

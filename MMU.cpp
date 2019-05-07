@@ -3,9 +3,9 @@
 //
 //
 
-#include "MMU.h"
-
-
+#include "MMU.hpp"
+#include "PCB.hpp"
+#include "RAM.hpp"
 /*MMU MMU::instance()
 {
     pageAccessCounts_ = 0;
@@ -54,7 +54,15 @@ int MMU::TLBFaults()
 void MMU::read(Address &addr) // translate address to info
 {
   Word pageNum = addr.page();
-    //get page number from address info
+  unsigned frameNum - PCB::findFrame(pageNum);
+  if (frameNum > 255)
+    {
+         RAM::read(f)
+    }
+    else
+    {
+        MemoryManager mM;
+    }
     //see if page is in Page table
     //if not we receive a page fault and  page in from backing store
 }

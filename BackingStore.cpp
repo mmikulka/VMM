@@ -6,14 +6,15 @@
 //  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
-#include "BackingStore.h"
+#include "BackingStore.hpp"
+
 
 BackingStore::BackingStore()
 {
     file.open("backingstore.bin");
 }
 
-void BackingStore::read(Word&)
+void BackingStore::read(Word& pagenumber)
 {
     
 }

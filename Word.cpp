@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
-#include "Word.h"
+#include "Word.hpp"
 
 
 u_int32_t Address::address()
@@ -22,9 +22,9 @@ u_int32_t Address::address()
 
 Word Address::displacement()
 {
-    Word temp = {value_&255};
+    Word temp;
 
-    temp.value_ = (value_ & 256);
+    temp.value_ = (value_ & 255);
 
     return temp;
 }

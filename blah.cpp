@@ -1,9 +1,9 @@
 
-#include "backingStore.h"
-#include "MemoryManager.h"
-#include "MMU.h"
-#include "RAM.h"
-#include "Word.h"
+#include "backingStore.hpp"
+#include "MemoryManager.hpp"
+#include "MMU.hpp"
+#include "RAM.hpp"
+#include "Word.hpp"
 
 using namespace std;
 

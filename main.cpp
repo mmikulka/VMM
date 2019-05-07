@@ -10,9 +10,9 @@
 #include <fstream>
 //#include "backingStore.h"
 //#include "MemoryManager.h"
-#include "MMU.h"
+#include "MMU.hpp"
 //#include "RAM.h"
-#include "Word.h"
+#include "Word.hpp"
 
 using namespace std;
 

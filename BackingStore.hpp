@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-#include "Word.h"
+#include "Word.hpp"
 
 class BackingStore
 {

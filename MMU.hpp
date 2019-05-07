@@ -8,10 +8,10 @@
 #define MMU_h
 
 #include <stdio.h>
-#include "Word.h"
-#include "MemoryManager.h"
+#include "Word.hpp"
+#include "MemoryManager.hpp"
 #include <array>
-#include "PCB.h"
+#include "PCB.hpp"
 
 struct TLB
 {

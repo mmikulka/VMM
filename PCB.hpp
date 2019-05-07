@@ -2,7 +2,7 @@
 #define PCB_h
 
 #include <array>
-#include "Word.h"
+#include "Word.hpp"
 
 struct PageTableEntry
 {
@@ -16,9 +16,9 @@ class PCB
 public:
     PCB();
     Word addframe(const Word &pageNumber, const Word &FrameNumber);
-    unsigned findFrame(const Word &);
+    static unsigned findFrame(const Word &);
 private:
-    std::array <PageTableEntry, 256> pageTable;
+    static std::array <PageTableEntry, 256> pageTable;
 };
 
 #endif

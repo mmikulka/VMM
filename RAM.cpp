@@ -6,7 +6,7 @@
 //  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
-#include "RAM.h"
+#include "RAM.hpp"
 
 RAM::RAM()
 {
@@ -20,7 +20,14 @@ Word RAM::read(unsigned frameNum)
     return frames[frameNum];
 }
 
-void RAM::addFrame(const Word &Item, unsigned FrameNum)
+void RAM::addFrame(const Word &item, unsigned frameNum)
 {
-    
+    frames[frameNum] = item;
+    statuses[frameNum].accessed = false;
+    statuses[frameNum].dirty = false;
 }
+
+/*void RAM::deleteFrame(unsigned FrameNum)
+{
+    frames[FrameNum] = NULL; 
+}*/

@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 #include <queue>
-#include "Word.h"
-#include "BackingStore.h"
-#include "RAM.h"
+#include "Word.hpp"
+#include "BackingStore.hpp"
+#include "RAM.hpp"
 
 class MemoryManager
 {
