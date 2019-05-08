@@ -13,24 +13,24 @@
 
 struct Word
 {
-    public:
-    uint32_t value_;
+public:
+	uint32_t value_;
 
-    uint32_t frame;
+	uint32_t frame;
 
 };
 
 
 
-struct Address: Word
+struct Address : Word
 {
-    public:
-    uint32_t address();
-    Word displacement();
-    Word frame();
-    Word page();
-    Address& operator=(const Address& rhs);
-    Address& operator=(const Word& rhs);
+public:
+	uint32_t address();
+	Word displacement();
+	Word frame();
+	Word page();
+	Address& operator=(const Address& rhs);
+	Address& operator=(const Word& rhs);
 };
 
 

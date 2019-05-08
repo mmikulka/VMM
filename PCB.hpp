@@ -1,3 +1,4 @@
+#pragma once
 #ifndef PCB_h
 #define PCB_h
 
@@ -8,18 +9,18 @@
 struct PageTableEntry
 {
 public:
-    unsigned frameNumber;
-    bool valid = false;
+	unsigned frameNumber;
+	bool valid = false;
 };
 
 class PCB
 {
 public:
-    PCB();
-    static void addFrame(const Word &pageNumber, const unsigned &FrameNumber);
-    static unsigned findFrame(const Word &);
+	PCB();
+	static void addFrame(const Word &pageNumber, const unsigned &FrameNumber);
+	static unsigned findFrame(const Word &);
 private:
-    static std::array <PageTableEntry, 256> pageTable;
+	static std::array <PageTableEntry, 256> pageTable;
 };
 
 #endif

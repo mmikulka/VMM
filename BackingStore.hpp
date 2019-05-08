@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright Â© 2019 Matthew Mikulka. All rights reserved.
+//  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef BackingStore_hpp
@@ -17,12 +17,12 @@
 class BackingStore
 {
 public:
-    BackingStore();
-    
-    Word read(Address&);
-    
-    ~BackingStore();
+	BackingStore();
+
+	Word read(Address&);
+
+	~BackingStore();
 private:
-    std::fstream file;
+	std::fstream file;
 };
 #endif /* BackingStore_hpp */

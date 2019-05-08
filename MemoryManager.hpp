@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright Â© 2019 Matthew Mikulka. All rights reserved.
+//  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef MemoryManager_hpp
@@ -19,11 +19,11 @@
 class MemoryManager
 {
 public:
-    MemoryManager();
-    void pageIn(Address & item);
-   // void read(Address & pageNumber);
+	MemoryManager();
+	void pageIn(Address & item);
+	// void read(Address & pageNumber);
 private:
-    static std::queue<unsigned> freeFrames;
+	static std::queue<unsigned> freeFrames;
 };
 
 #endif /* MemoryManager_hpp */

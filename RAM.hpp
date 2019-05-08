@@ -1,9 +1,10 @@
+#pragma once
 //
 //  RAM.hpp
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright Â© 2019 Matthew Mikulka. All rights reserved.
+//  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef RAM_hpp
@@ -15,20 +16,20 @@
 
 struct Status
 {
-    bool accessed = false;
-    bool dirty = false;
+	bool accessed = false;
+	bool dirty = false;
 };
 
 class RAM
 {
 public:
-    RAM();
-    static Word read(unsigned frameNum);
-    void addFrame(const Word &Item, unsigned FrameNum);
-    void deleteFrame(unsigned FrameNum);
+	RAM();
+	static unsigned char read(unsigned frameNum, const Address&);
+	void addFrame(const Word &Item, unsigned FrameNum);
+	//void deleteFrame(unsigned FrameNum);
 private:
-    static std::array<Word, 256> frames;
-    static std::array<Status, 256> statuses;
+	static std::array<Word, 256> frames;
+	static std::array<Status, 256> statuses;
 };
 
 #endif /* RAM_hpp */
