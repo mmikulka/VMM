@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include "RAM.hpp"
@@ -18,6 +18,8 @@ unsigned char RAM::read(unsigned frameNum, const Address &addr)
 {
 	unsigned char data;
 	statuses[frameNum].accessed = true;
+    uint32_t pageData = frames[frameNum].value_;
+    pageData << addr.displacement();
 	data = static_cast<unsigned char>(frames[frameNum].value_);
 	return data;
 }
