@@ -14,12 +14,12 @@ RAM::RAM()
 }
 
 
-unsigned char RAM::read(unsigned frameNum, const Address &addr)
+unsigned char RAM::read(unsigned frameNum, Address &addr)
 {
 	unsigned char data;
 	statuses[frameNum].accessed = true;
     uint32_t pageData = frames[frameNum].value_;
-    pageData << addr.displacement();
+    pageData = pageData >> addr.displacement();
 	data = static_cast<unsigned char>(frames[frameNum].value_);
 	return data;
 }

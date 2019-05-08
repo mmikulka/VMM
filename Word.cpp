@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/29/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include "Word.hpp"
@@ -20,13 +20,13 @@ uint32_t Address::address()
 //a = a << 3; this bit shifts left 3 so if a was 00000001
 // not this becomes 00001000
 
-Word Address::displacement()
+uint32_t Address::displacement()
 {
 	Word temp;
 
 	temp.value_ = (value_ & 255);
 
-	return temp;
+	return temp.value_;
 }
 Word Address::frame()
 {

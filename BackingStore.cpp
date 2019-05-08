@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include "BackingStore.hpp"
@@ -11,20 +11,24 @@
 
 BackingStore::BackingStore()
 {
-	file.open("backingstore.bin");
+		file.open("BACKING_STORE.bin");
 }
 
 Word BackingStore::read(Address & addr)
 {
-	Word item;
+		Word item;
 
-	Word pageNum = addr.page();
+		Word pageNum = addr.page();
 
-	file.seekg(pageNum.value_ * sizeof(uint32_t));
+		uint32_t * buffer = new uint32_t[64];
 
-	file >> item.value_;
+		file.seekg(pageNum.value_ * (sizeof(buffer)));
 
-	return item;
+		file.read((char*)buffer, sizeof(buffer));
+
+		std::cout << buffer[1] << std::endl;
+
+		return item;
 }
 
 BackingStore::~BackingStore()

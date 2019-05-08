@@ -4,7 +4,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef RAM_hpp
@@ -24,7 +24,7 @@ class RAM
 {
 public:
 	RAM();
-	static unsigned char read(unsigned frameNum, const Address&);
+	static unsigned char read(unsigned frameNum, Address&);
 	void addFrame(const Word &Item, unsigned FrameNum);
 	//void deleteFrame(unsigned FrameNum);
 private:

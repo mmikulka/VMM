@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include <iostream>
@@ -35,14 +35,13 @@ int main(int argc, const char * argv[]) {
 		while (inFile >> temp)
 		{
 			unsigned char data;
-            logAddr.value_ = temp;
-            data = MemManagerUnit.read(logAddr);
-            cout << data << '\n';
+        logAddr.value_ = temp;
+        data = MemManagerUnit.read(logAddr);
+        //cout <<  static_cast<int>(data) << '\n';
 		}
 
 	//}
 
 	cout << "test" << endl;
-	cin.get();
 	return 0;
 }

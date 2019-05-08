@@ -26,7 +26,7 @@ struct Address : Word
 {
 public:
 	uint32_t address();
-	Word displacement();
+	uint32_t displacement();
 	Word frame();
 	Word page();
 	Address& operator=(const Address& rhs);
