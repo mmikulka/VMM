@@ -3,6 +3,7 @@
 
 #include <array>
 #include "Word.hpp"
+#include <iostream>
 
 struct PageTableEntry
 {
