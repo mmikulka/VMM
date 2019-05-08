@@ -43,3 +43,28 @@ Word Address::page()
     */
     return temp;
 }
+
+Address& Address::operator=(const Address& rhs)
+{
+    if (&rhs != this)
+    {
+        value_ = rhs.value_;
+    }
+    else
+    {
+        std::cerr << "Attempted assignment to itself.";
+    }
+    return *this;
+}
+Address& Address::operator=(const Word& rhs)
+{
+    if (&rhs != this)
+    {
+        value_ = rhs.value_;
+    }
+    else
+    {
+        std::cerr << "Attempted assignment to itself.";
+    }
+    return *this;
+}

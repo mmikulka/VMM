@@ -55,7 +55,7 @@ unsigned MMU::read(Address &addr) // translate address to info
 {
   Word pageNum = addr.page();
   unsigned frameNum = PCB::findFrame(pageNum);
-  if (frameNum > 255)
+  if (frameNum <= 255)
     {
          RAM::read(frameNum);
         ++pageAccessCounts_;
@@ -65,13 +65,8 @@ unsigned MMU::read(Address &addr) // translate address to info
         MemoryManager mM;
         mM.pageIn(addr);
         frameNum = PCB::findFrame(pageNum);
-        RAM::read(frameNum);
+        addr = RAM::read(frameNum);
         ++pageInFaults_;
     }
     return frameNum;
 }
-/*
-TODO:
-
-implement TLB 
-*/

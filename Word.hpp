@@ -8,6 +8,7 @@
 #define Word_hpp
 
 #include <stdio.h>
+#include <iostream>
 #include <stdint.h>
 
 struct Word
@@ -28,6 +29,8 @@ struct Address: Word
     Word displacement();
     Word frame();
     Word page();
+    Address& operator=(const Address& rhs);
+    Address& operator=(const Word& rhs);
 };
 
 
