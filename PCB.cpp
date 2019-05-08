@@ -9,7 +9,10 @@ PCB::PCB()
 
 void PCB::addFrame(const Word &pageNumber, const unsigned &frameNum)
 {
-    //TBC
+    PageTableEntry entry;
+    entry.frameNumber = frameNum;
+    entry.valid = true;
+    pageTable[pageNumber.value_] = entry;
 }
 
 unsigned PCB::findFrame(const Word &pageNum)
