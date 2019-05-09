@@ -15,6 +15,7 @@
 #include "BackingStore.hpp"
 #include "Word.hpp"
 
+
 class PRA{
 public:
     PRA();
@@ -30,6 +31,7 @@ protected:
     std::string reference_string;
     Address victim_frame;
     std::fstream infile;
+    
 };
 
 #endif /* PRA_hpp */
