@@ -15,13 +15,15 @@
 #include "BackingStore.hpp"
 #include "RAM.hpp"
 #include "PCB.hpp"
+#include "MMU.hpp"
 
 class MemoryManager
 {
 public:
 	MemoryManager();
-	void pageIn(Address & item);
-	// void read(Address & pageNumber);
+	void pageIn(Word& addr);
+	//void pageIn(Address & item);
+	unsigned char read(Address & pageNumber);
 private:
 	static std::queue<unsigned> freeFrames;
 };

@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
+//  Copyright © 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include <iostream>
@@ -17,31 +17,32 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-	/*if (argc < 2)
+	if (argc < 2)
 	{
 		cout << "You put in the wrong amount of files" << std::endl;
 		cin.get();
 		return 0;
 	}
 	else
-	{*/
+	{
 
 		uint32_t temp = 0;
 		Address logAddr;
 		ifstream inFile;
-		MMU MemManagerUnit;
-		inFile.open("addresses.txt", ios::out);
+		MemoryManager manager;
+		inFile.open(argv[1], ios::out);
 
 		while (inFile >> temp)
 		{
 			unsigned char data;
-        logAddr.value_ = temp;
-        data = MemManagerUnit.read(logAddr);
-        //cout <<  static_cast<int>(data) << '\n';
+            logAddr.value_ = temp;
+            data = manager.read(logAddr);
+            //cout << static_cast<unsigned int>(data)<< '\n';
 		}
 
-	//}
+	}
 
-	cout << "test" << endl;
+	cout << "end of program" << endl;
+	cin.get();
 	return 0;
 }

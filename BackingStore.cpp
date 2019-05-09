@@ -1,4 +1,4 @@
-//
+﻿//
 //  BackingStore.cpp
 //  VMM
 //
@@ -11,24 +11,23 @@
 
 BackingStore::BackingStore()
 {
-		file.open("BACKING_STORE.bin");
+	file.open("BACKING_STORE.bin");
 }
 
-Word BackingStore::read(Address & addr)
+
+
+char* BackingStore::read(Word & pageNum)
 {
-		Word item;
 
-		Word pageNum = addr.page();
+	char * buffer = new char[256]; // I reccomend a smart pointer 
 
-		uint32_t * buffer = new uint32_t[64];
+	file.seekg(static_cast<uint64_t>(pageNum.value_) * (sizeof(buffer)));
 
-		file.seekg(pageNum.value_ * (sizeof(buffer)));
+	file.read((char*)buffer, sizeof(buffer));
 
-		file.read((char*)buffer, sizeof(buffer));
+	std::cout << static_cast<unsigned char>(buffer[1]) << std::endl;
 
-		std::cout << buffer[1] << std::endl;
-
-		return item;
+	return buffer;
 }
 
 BackingStore::~BackingStore()

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 //
 //  RAM.hpp
 //  VMM
@@ -25,10 +25,11 @@ class RAM
 public:
 	RAM();
 	static unsigned char read(unsigned frameNum, Address&);
-	void addFrame(const Word &Item, unsigned FrameNum);
+	void addFrame(char* item, unsigned frameNum);
+	//void addFrame(uint32_t *Item, unsigned FrameNum);
 	//void deleteFrame(unsigned FrameNum);
 private:
-	static std::array<Word, 256> frames;
+	static std::array<char*, 256> frames;
 	static std::array<Status, 256> statuses;
 };
 

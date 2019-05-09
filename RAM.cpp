@@ -1,4 +1,4 @@
-//
+﻿//
 //  RAM.cpp
 //  VMM
 //
@@ -18,13 +18,13 @@ unsigned char RAM::read(unsigned frameNum, Address &addr)
 {
 	unsigned char data;
 	statuses[frameNum].accessed = true;
-    uint32_t pageData = frames[frameNum].value_;
-    pageData = pageData >> addr.displacement();
-	data = static_cast<unsigned char>(frames[frameNum].value_);
+	uint32_t displacement = addr.displacement();
+	char pageData = frames[frameNum][displacement];
+	data = static_cast<unsigned char>(pageData);
 	return data;
 }
 
-void RAM::addFrame(const Word &item, unsigned frameNum)
+void RAM::addFrame( char* item, unsigned frameNum)
 {
 	frames[frameNum] = item;
 	statuses[frameNum].accessed = false;
@@ -36,5 +36,5 @@ void RAM::addFrame(const Word &item, unsigned frameNum)
 	frames[FrameNum] = NULL;
 }*/
 
-std::array<Word, 256> RAM::frames;
+std::array<char*, 256> RAM::frames;
 std::array<Status, 256> RAM::statuses;

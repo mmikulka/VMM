@@ -17,12 +17,13 @@ MemoryManager::MemoryManager()
 	}
 }
 
-void MemoryManager::pageIn(Address & addr)
+void MemoryManager::pageIn(Word & addr)
 {
-	Word pageNum = addr.page();
+	Word pageNum = addr;
 	BackingStore back;
-	Word item = back.read(addr);
-	unsigned frameNum;
+	char * item;
+	item = back.read(addr);
+	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
 	{
 		frameNum = freeFrames.front();
@@ -31,6 +32,24 @@ void MemoryManager::pageIn(Address & addr)
 	RAM ram;
 	ram.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);
+}
+
+unsigned char MemoryManager::read(Address& addr)
+{
+	MMU memManagerUnit;
+	try
+	{
+		unsigned char data;
+		data = memManagerUnit.read(addr);
+		return data;
+	}
+	catch (MMU::PageFault p )
+	{
+		pageIn(p.pageNumber_);
+		unsigned char data;
+		data = memManagerUnit.read(addr);
+		return data;
+	}
 }
 
 std::queue<unsigned> MemoryManager::freeFrames;

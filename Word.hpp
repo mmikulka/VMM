@@ -14,9 +14,8 @@
 struct Word
 {
 public:
-	uint32_t value_;
 
-	uint32_t frame;
+	uint32_t value_;
 
 };
 

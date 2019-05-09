@@ -19,7 +19,7 @@ class BackingStore
 public:
 	BackingStore();
 
-	Word read(Address&);
+	char* read(Word&);
 
 	~BackingStore();
 private:

@@ -35,20 +35,21 @@ public:
 
 	unsigned char read(Address &addr);
 
-	//u_int32_t return_test();
-
-private:
-	int pageAccessCounts_;
-	int pageInFaults_;
-	int tlbAccessCount_;
-	int tlbFaults_;
-	TLB tlb_;
-
 	struct PageFault
 	{
 		PageFault();
+		PageFault(const Word &);
 		Word pageNumber_;
 	};
+
+	//u_int32_t return_test();
+
+private:
+	static int pageAccessCounts_;
+	static int pageInFaults_;
+	static int tlbAccessCount_;
+	static int tlbFaults_;
+	static TLB tlb_;
 };
 
 
