@@ -13,7 +13,7 @@ void PCB::addFrame(const Word &pageNumber, const unsigned &frameNum)
 	entry.frameNumber = frameNum;
 	entry.valid = true;
 	pageTable[pageNumber.value_] = entry;
-	std::cout << "add Frame\n";
+	//std::cout << "add Frame\n";
 }
 
 unsigned PCB::findFrame(const Word &pageNum)

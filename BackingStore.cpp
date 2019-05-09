@@ -19,13 +19,13 @@ BackingStore::BackingStore()
 char* BackingStore::read(Word & pageNum)
 {
 
-	char * buffer = new char[256]; // I reccomend a smart pointer 
+	char *buffer = new char[256]; // I reccomend a smart pointer
 
-	file.seekg(static_cast<uint64_t>(pageNum.value_) * (sizeof(buffer)));
+	file.seekg(static_cast<uint64_t>(pageNum.value_) * 256);
 
-	file.read((char*)buffer, sizeof(buffer));
+	file.read(buffer, 255);
 
-	std::cout << static_cast<unsigned char>(buffer[1]) << std::endl;
+//	std::cout << static_cast<int>(buffer[1]) << std::endl;
 
 	return buffer;
 }
