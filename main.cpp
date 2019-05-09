@@ -13,6 +13,8 @@
 #include "MMU.hpp"
 //#include "RAM.h"
 #include "Word.hpp"
+#include <stdio.h>
+#include "BackingStore.hpp"
 
 using namespace std;
 
@@ -30,18 +32,20 @@ int main(int argc, const char * argv[]) {
 		Address logAddr;
 		ifstream inFile;
 		MMU MemManagerUnit;
+    BackingStore blah;
 		inFile.open("addresses.txt", ios::out);
 
 		while (inFile >> temp)
 		{
 			unsigned char data;
-        logAddr.value_ = temp;
-        data = MemManagerUnit.read(logAddr);
-        //cout <<  static_cast<int>(data) << '\n';
+            logAddr.value_ = temp;
+            blah.read(logAddr);
+            //cout << +data << '\n';
 		}
 
 	//}
 
 	cout << "test" << endl;
+	//cin.get();
 	return 0;
 }

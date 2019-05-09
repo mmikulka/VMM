@@ -11,24 +11,38 @@
 
 BackingStore::BackingStore()
 {
-		file.open("BACKING_STORE.bin");
+	file.open("BACKING_STORE.bin");
 }
 
 Word BackingStore::read(Address & addr)
 {
-		Word item;
+	/*Word item;
 
-		Word pageNum = addr.page();
+	Word pageNum = addr.page();
 
-		uint32_t * buffer = new uint32_t[64];
+	file.seekg(pageNum.value_ * sizeof(uint32_t));
 
-		file.seekg(pageNum.value_ * (sizeof(buffer)));
+	file >> item.value_;
 
-		file.read((char*)buffer, sizeof(buffer));
-
-		std::cout << buffer[1] << std::endl;
-
-		return item;
+	return item;*/
+    
+    Word item;
+    
+    Word pageNum = addr.page();
+    
+    uint32_t * buffer = new uint32_t[64];
+    
+    file.seekg(pageNum.value_ * (sizeof(buffer)));
+    
+    file.read((char*)buffer, sizeof(buffer));
+    
+    //std::cout << (uint32_t *)buffer[1] << std::endl;
+    
+    for (int i = 0; i < (2); i++) {
+        std::cout << (uint32_t *)buffer[i] << '\t';
+    } std::cout << std::endl;
+    
+    return item;
 }
 
 BackingStore::~BackingStore()
