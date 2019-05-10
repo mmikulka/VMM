@@ -12,19 +12,21 @@
 #include <stdio.h>
 #include "PRA.hpp"
 #include <queue>
+#include <list>
 
-struct queue_lim{
-    queue<Frames> queue_struct;
-    
-    void add_node(Frame passed_f) {
-        if(queue_struct.size() < 16) {
-            queue_struct.push(passed_f);
-        } else { // this means the queue is larger than 17
-            cout << "the maximum size of the queue has been reached\n";
-        }
-    }
-    
-};
+/*
+[3]->[2]->[1]
+*/
+
+/*
+ fixed size array with a varible called first 
+ [7][5][6]   
+*/
+
+/*
+[5]-[3]->[?]
+*/
+
 
 class FIFO: public PRA{
 public:
@@ -32,7 +34,7 @@ public:
     ~FIFO();
     
 private:
-    queue_lim local_queue;
+    
 };
 
 #endif /* FIFO_hpp */

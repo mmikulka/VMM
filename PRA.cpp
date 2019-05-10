@@ -12,7 +12,7 @@ PRA::PRA(){
     infile.open("BACKING_STORE.bin");
 }
 
-PRA::pull_frame_from_b_store(Word &pageNum){
+void PRA::pull_frame_from_b_store(Word &pageNum){
     /*
      1) i'm not sure if here i'm going to use seekg to retrieve the
         frame from the backing store

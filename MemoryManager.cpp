@@ -34,23 +34,23 @@ void MemoryManager::pageIn(Word & addr)
 	PCB::addFrame(pageNum, frameNum);
 }
 
-unsigned char MemoryManager::read(Address& addr)
-{
-	MMU memManagerUnit;
-	try
-	{
-		unsigned char data;
-		data = memManagerUnit.read(addr);
-		return data;
-	}
-	catch (MMU::PageFault p )
-	{
-		pageIn(p.pageNumber_);
-		unsigned char data;
-		data = memManagerUnit.read(addr);
-		return data;
-	}
-}
+//unsigned char MemoryManager::read(Address& addr)
+//{
+//	MMU memManagerUnit;
+//	try
+//	{
+//		unsigned char data;
+//		data = memManagerUnit.read(addr);
+//		return data;
+//	}
+//	catch (MMU::PageFault p )
+//	{
+//		pageIn(p.pageNumber_);
+//		unsigned char data;
+//		data = memManagerUnit.read(addr);
+//		return data;
+//	}
+//}
 
 std::queue<unsigned> MemoryManager::freeFrames;
 

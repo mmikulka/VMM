@@ -45,6 +45,8 @@ public:
 	//u_int32_t return_test();
 
 private:
+	Word tlb_search(Word& pageNum);
+
 	static int pageAccessCounts_;
 	static int pageInFaults_;
 	static int tlbAccessCount_;

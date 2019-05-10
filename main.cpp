@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright � 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ? 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include <iostream>
@@ -16,32 +16,52 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-	if (argc < 2)
-	{
-		cout << "You put in the wrong amount of files" << std::endl;
-		cin.get();
-		return 0;
-	}
-	else
-	{
+int main(int argc, const char * argv[]) 
+{
+	//if (argc < 2)
+	//{
+	//	cout << "You put in the wrong amount of files" << std::endl;
+	//	cin.get();
+	//	return 0;
+	//}
+	//else
+	//{
 
 		uint32_t temp = 0;
 		Address logAddr;
-		ifstream inFile;
+		//ifstream inFile;
 		MemoryManager manager;
-		inFile.open(argv[1], ios::out);
-
-		while (inFile >> temp)
+		bool loopCheck = true;
+		MMU mem_man_un;
+		//inFile.open(argv[1], ios::out);
+		unsigned char data;
+		while (cin >> temp) //<addresses.txt> 2|output.txt
 		{
-			unsigned char data;
-			logAddr.value_ = temp;
-			data = manager.read(logAddr);
-			cout << static_cast<unsigned int>(data)<< '\n';
+			while (loopCheck)
+			{
+				try {
+					//unsigned char data;
+					logAddr.value_ = temp;
+					data = mem_man_un.read(logAddr);
+					loopCheck = false; 
+				}
+				catch (MMU::PageFault p)
+				{
+					manager.pageIn(p.pageNumber_);
+				}
+			}
+			cout << static_cast<unsigned int>(data) << '\n';
+			loopCheck = true; 
 		}
 
-	}
+	//}
 
 	cout << "end of program" << endl;
+	cin.clear();
+	cin.ignore(256, '\n');
+	//cin.getline();
+	cin.get();
+	
+	//system("PAUSE");
 	return 0;
 }

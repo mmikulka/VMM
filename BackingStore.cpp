@@ -25,7 +25,7 @@ char* BackingStore::read(Word & pageNum)
 
 	file.read(buffer, 255);
 
-//	std::cout << static_cast<int>(buffer[1]) << std::endl;
+	std::cout << static_cast<int>(buffer[1]) << std::endl;
 
 	return buffer;
 }

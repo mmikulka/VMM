@@ -53,25 +53,21 @@ int MMU::TLBFaults()
 
 unsigned char MMU::read(Address & addr) // translate address to info
 {
-	Word pageNum = addr.page();
+	Word pageNum = addr.page(); // extract page number from address.
 	unsigned char data;
-	unsigned frameNum = PCB::findFrame(pageNum);
+	unsigned frameNum;
+	//see if pageNum is in TLB
+	//frameNum = tlb_search(pageNum);
+	frameNum = PCB::findFrame(pageNum);
 
 	if (frameNum > 255)
 		throw PageFault(pageNum);
 	if (frameNum <= 255)
 	{
 		data = RAM::read(frameNum, addr);
+		//add value to TLB
 		++pageAccessCounts_;
 	}
-	/*
-	// this needs to be a fault throw
-	MemoryManager mM;
-	mM.pageIn(addr);
-	frameNum = PCB::findFrame(pageNum);
-	data = RAM::read(frameNum, addr);
-	++pageInFaults_;
-*/
 	return data;
 }
 
