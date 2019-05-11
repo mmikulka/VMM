@@ -3,11 +3,12 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include "MemoryManager.hpp"
 
+enum PRA_decision{FIFO, LRU};
 
 MemoryManager::MemoryManager()
 {
@@ -23,12 +24,22 @@ void MemoryManager::pageIn(Word & addr)
 	BackingStore back;
 	char * item;
 	item = back.read(addr);
+    
+    PRA_decision decision;
+    decision = FIFO;
+    
 	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
 	{
 		frameNum = freeFrames.front();
 		freeFrames.pop();
-	}
+    } else {
+        if(decision == FIFO) {
+            
+        } else if (decision == LRU) {
+            
+        }
+    }
 	RAM ram;
 	ram.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);
