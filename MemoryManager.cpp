@@ -25,8 +25,7 @@ void MemoryManager::pageIn(Word & addr)
 	char * item;
 	item = back.read(addr);
     
-    PRA_decision decision;
-    decision = FIFO;
+    PRA_decision decision = FIFO;
     
 	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
