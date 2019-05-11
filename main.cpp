@@ -16,7 +16,7 @@
 
 using namespace std;
 
-int main(int argc, const char * argv[]) 
+int main() 
 {
 	//if (argc < 2)
 	//{
@@ -55,7 +55,8 @@ int main(int argc, const char * argv[])
 		}
 
 	//}
-
+	cout << "TLB accesses: "<< mem_man_un.TLBAccesses() << endl;
+	cout << "TLB Faults: "<< mem_man_un.TLBFaults() << endl;
 	cout << "end of program" << endl;
 	cin.clear();
 	cin.ignore(256, '\n');

@@ -8,7 +8,7 @@
 
 #include "MemoryManager.hpp"
 
-enum PRA_decision{FIFO, LRU};
+enum PRA_decision{FIFO_, LRU_};
 
 MemoryManager::MemoryManager()
 {
@@ -25,7 +25,7 @@ void MemoryManager::pageIn(Word & addr)
 	char * item;
 	item = back.read(addr);
     
-    PRA_decision decision = FIFO;
+    PRA_decision decision = FIFO_;
     
 	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
@@ -33,11 +33,19 @@ void MemoryManager::pageIn(Word & addr)
 		frameNum = freeFrames.front();
 		freeFrames.pop();
     } else {
-        if(decision == FIFO) {
-            
-        } else if (decision == LRU) {
-            
+		PRA * pra;
+        if(decision == FIFO_) 
+		{
+            pra = new FIFO();
+        } 
+		else
+		 
+		{
+            pra = new LRU();
         }
+		frameNum = pra->select_frame(0);
+
+		
     }
 	RAM ram;
 	ram.addFrame(item, frameNum);

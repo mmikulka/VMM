@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef MemoryManager_hpp
@@ -16,6 +16,8 @@
 #include "RAM.hpp"
 #include "PCB.hpp"
 #include "MMU.hpp"
+#include "FIFO.hpp"
+#include "LRU.hpp"
 
 class MemoryManager
 {

@@ -15,8 +15,8 @@
 
 struct TLB
 {
-	std::array<int, 16> pageNum;
-	std::array <int, 16> FrameNum;
+	std::array<uint32_t, 16> pageNum;
+	std::array<uint32_t, 16> FrameNum;
 };
 
 
@@ -33,6 +33,7 @@ public:
 	int TLBFaults();
 
 
+
 	unsigned char read(Address &addr);
 
 	struct PageFault
@@ -45,7 +46,8 @@ public:
 	//u_int32_t return_test();
 
 private:
-	Word tlb_search(Word& pageNum);
+	unsigned tlb_search(Word& pageNum);
+	void tlb_add(uint32_t framenum, uint32_t pageNum);
 
 	static int pageAccessCounts_;
 	static int pageInFaults_;

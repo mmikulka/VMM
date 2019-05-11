@@ -19,19 +19,8 @@
 class PRA{
 public:
     PRA();
-    virtual Word select_frame(Address &frame);
-    //void pull_and_replace_frame
-    void pull_frame_from_b_store(Word &pageNum);
+    virtual unsigned select_frame(int);
     ~PRA();
-    
-protected:
-    /*
-        the variables that both child classes are going to use
-     */
-    std::string reference_string;
-    Address victim_frame;
-    std::fstream infile;
-    
 };
 
 #endif /* PRA_hpp */

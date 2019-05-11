@@ -14,27 +14,14 @@
 #include <queue>
 #include <list>
 
-/*
-[3]->[2]->[1]
-*/
-
-/*
- fixed size array with a varible called first 
- [7][5][6]   
-*/
-
-/*
-[5]-[3]->[?]
-*/
-
-
 class FIFO: public PRA{
 public:
     FIFO();
+    unsigned select_frame(int type);
     ~FIFO();
-    
 private:
-    
+    static std::list<uint32_t> replacement_ram;
+    static std::list<uint32_t> replacement_tlb;
 };
 
 #endif /* FIFO_hpp */
