@@ -12,6 +12,7 @@
 #include "MemoryManager.hpp"
 #include <array>
 #include "PCB.hpp"
+#include "constVars.hpp"
 
 struct TLB
 {

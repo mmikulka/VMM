@@ -23,7 +23,7 @@ unsigned PCB::findFrame(const Word &pageNum)
 	{
 		return temp.frameNumber;
 	}
-	return 256;
+	return 257;
 }
 
-std::array <PageTableEntry, 256> PCB::pageTable;
+std::array <PageTableEntry, PAGE_TABLE_SIZE> PCB::pageTable;

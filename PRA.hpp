@@ -14,6 +14,7 @@
 #include <fstream>
 #include "BackingStore.hpp"
 #include "Word.hpp"
+#include "constVars.hpp"
 
 
 class PRA{

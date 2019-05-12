@@ -18,6 +18,7 @@
 #include "MMU.hpp"
 #include "FIFO.hpp"
 #include "LRU.hpp"
+#include "constVars.hpp"
 
 class MemoryManager
 {

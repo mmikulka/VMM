@@ -5,6 +5,7 @@
 #include <array>
 #include "Word.hpp"
 #include <iostream>
+#include "constVars.hpp"
 
 struct PageTableEntry
 {

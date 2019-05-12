@@ -16,24 +16,14 @@
 
 using namespace std;
 
-int main() 
+int main()
 {
-	//if (argc < 2)
-	//{
-	//	cout << "You put in the wrong amount of files" << std::endl;
-	//	cin.get();
-	//	return 0;
-	//}
-	//else
-	//{
 
 		uint32_t temp = 0;
 		Address logAddr;
-		//ifstream inFile;
 		MemoryManager manager;
 		bool loopCheck = true;
 		MMU mem_man_un;
-		//inFile.open(argv[1], ios::out);
 		unsigned char data;
 		while (cin >> temp) //<addresses.txt> 2|output.txt
 		{
@@ -43,7 +33,7 @@ int main()
 					//unsigned char data;
 					logAddr.value_ = temp;
 					data = mem_man_un.read(logAddr);
-					loopCheck = false; 
+					loopCheck = false;
 				}
 				catch (MMU::PageFault p)
 				{
@@ -51,7 +41,7 @@ int main()
 				}
 			}
 			cout << static_cast<unsigned int>(data) << '\n';
-			loopCheck = true; 
+			loopCheck = true;
 		}
 
 	//}
@@ -60,9 +50,7 @@ int main()
 	cout << "end of program" << endl;
 	cin.clear();
 	cin.ignore(256, '\n');
-	//cin.getline();
 	cin.get();
-	
-	//system("PAUSE");
+
 	return 0;
 }

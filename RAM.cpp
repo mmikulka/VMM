@@ -36,5 +36,5 @@ void RAM::addFrame( char* item, unsigned frameNum)
 	frames[FrameNum] = NULL;
 }*/
 
-std::array<char*, 256> RAM::frames;
-std::array<Status, 256> RAM::statuses;
+std::array<char*, RAM_SIZE> RAM::frames;
+std::array<Status, RAM_SIZE> RAM::statuses;

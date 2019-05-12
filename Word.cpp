@@ -24,14 +24,14 @@ uint32_t Address::displacement()
 {
 	Word temp;
 
-	temp.value_ = (value_ & 255);
+	temp.value_ = (value_ & PAGE_SIZE);
 
 	return temp.value_;
 }
 Word Address::frame()
 {
 	Word temp;
-	temp.value_ = ((value_ >> 8) & 255);
+	temp.value_ = ((value_ >> 8) & PAGE_SIZE);
 
 	return temp;
 }

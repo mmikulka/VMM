@@ -13,6 +13,7 @@
 #include "PRA.hpp"
 #include <queue>
 #include <list>
+#include "constVars.hpp"
 
 class FIFO: public PRA{
 public:

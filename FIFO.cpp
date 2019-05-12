@@ -10,11 +10,11 @@
 
 
 FIFO::FIFO() {
-    for (int i = 0; i < 128; ++i)
+    for (int i = 0; i < RAM_SIZE; ++i)
     {
         replacement_ram.push_back(i);
     }
-    for (int i = 0; i < 16; ++i)
+    for (int i = 0; i < TLB_SIZE; ++i)
     {
         replacement_tlb.push_back(i);
     }
@@ -39,9 +39,9 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
     return frame.value_;
 }
 
-void update_usage(uint32_t);
+void FIFO::update_usage(uint32_t page)
 {
-  
+
 }
 
 FIFO::~FIFO(){

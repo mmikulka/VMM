@@ -60,7 +60,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	unsigned frameNum;
 	//see if pageNum is in TLB
 	frameNum = tlb_search(pageNum);
-	if (frameNum > 255)
+	if (frameNum > RAM_CHECK_SIZE)
 	{
 		++tlbFaults_;
 		frameNum = PCB::findFrame(pageNum);
@@ -70,9 +70,9 @@ unsigned char MMU::read(Address & addr) // translate address to info
 		++tlbAccessCount_;
 	}
 
-	if (frameNum > 255)
+	if (frameNum > RAM_CHECK_SIZE)
 		throw PageFault(pageNum);
-	else if (frameNum <= 255)
+	else if (frameNum <= RAM_CHECK_SIZE)
 	{
 		data = RAM::read(frameNum, addr);
 		tlb_add(frameNum, pageNum.value_);//need frame number and pagenumber
@@ -84,7 +84,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 
 unsigned MMU::tlb_search(Word& pageNum)
 {
-	for (int i =0; i < 16; ++i)
+	for (int i =0; i < TLB_SIZE; ++i)
 	{
 		if (pageNum.value_ == tlb_.pageNum[i])
 		{

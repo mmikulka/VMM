@@ -10,8 +10,9 @@
 #define LRU_hpp
 
 #include <stdio.h>
+#include <list>
 #include "PRA.hpp"
-#include "list"
+#include "constVars.hpp"
 
 class LRU : public PRA {
 public:
@@ -21,7 +22,7 @@ public:
     ~LRU();
 
 private:
-  list <LRU_Status> used_list;
+  /*std::list <LRU_Status> used_list;
 
   struct LRU_Status
   {
@@ -29,8 +30,8 @@ private:
     int time;
     uint32_t frameNum;
 
-  }
-
+  };
+*/
 };
 
 #endif /* LRU_hpp */

@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright © 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ï¿½ 2019 Matthew Mikulka. All rights reserved.
 //
 
 #ifndef BackingStore_hpp
@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include "Word.hpp"
+#include "constVars.hpp"
 
 class BackingStore
 {

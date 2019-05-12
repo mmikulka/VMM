@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <array>
 #include "Word.hpp"
+#include "constVars.hpp"
 
 struct Status
 {
