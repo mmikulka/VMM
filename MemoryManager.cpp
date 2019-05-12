@@ -12,7 +12,7 @@ enum PRA_decision{FIFO_, LRU_};
 
 MemoryManager::MemoryManager()
 {
-	for (int i = 0; i < 256; ++i)
+	for (int i = 0; i < 128; ++i)
 	{
 		freeFrames.push(i);
 	}
@@ -24,9 +24,9 @@ void MemoryManager::pageIn(Word & addr)
 	BackingStore back;
 	char * item;
 	item = back.read(addr);
-    
+
     PRA_decision decision = FIFO_;
-    
+
 	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
 	{
@@ -34,18 +34,18 @@ void MemoryManager::pageIn(Word & addr)
 		freeFrames.pop();
     } else {
 		PRA * pra;
-        if(decision == FIFO_) 
+        if(decision == FIFO_)
 		{
             pra = new FIFO();
-        } 
+        }
 		else
-		 
+
 		{
-            pra = new LRU();
+            //pra = new LRU();
         }
 		frameNum = pra->select_frame(0);
 
-		
+
     }
 	RAM ram;
 	ram.addFrame(item, frameNum);

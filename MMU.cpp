@@ -69,7 +69,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	{
 		++tlbAccessCount_;
 	}
-	
+
 	if (frameNum > 255)
 		throw PageFault(pageNum);
 	else if (frameNum <= 255)
@@ -77,7 +77,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 		data = RAM::read(frameNum, addr);
 		tlb_add(frameNum, pageNum.value_);//need frame number and pagenumber
 		++pageAccessCounts_;
-		
+
 	}
 	return data;
 }
@@ -94,7 +94,7 @@ unsigned MMU::tlb_search(Word& pageNum)
 	return 257;
 }
 
-void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) // 
+void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) //
 {
 	uint32_t entry;
 	PRA_decision decision = FIFO_;
@@ -105,7 +105,7 @@ void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) //
 	}
 	else
 	{
-		pra = new LRU();
+		//pra = new LRU();
 	}
 	entry = pra->select_frame(101);
 	tlb_.FrameNum[entry] = frameNum;
@@ -122,4 +122,3 @@ int MMU::pageInFaults_ = 0;
 int MMU::tlbAccessCount_ = 0;
 int MMU::tlbFaults_ = 0;
 TLB MMU::tlb_;
-

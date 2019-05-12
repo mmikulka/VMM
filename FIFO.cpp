@@ -28,9 +28,9 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
         frame.value_ = replacement_ram.front();
         replacement_ram.pop_front();
         replacement_ram.push_back(frame.value_);
-        
+
     }
-    else 
+    else
     {
         frame.value_ = replacement_tlb.front();
         replacement_tlb.pop_front();
@@ -40,7 +40,7 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
 }
 
 FIFO::~FIFO(){
-    
+
 }
-std::list<uint32_t> replacement_ram;
-std::list<uint32_t> replacement_tlb;
+std::list<uint32_t> FIFO::replacement_ram;
+std::list<uint32_t> FIFO::replacement_tlb;

@@ -19,7 +19,7 @@
 class PRA{
 public:
     PRA();
-    virtual unsigned select_frame(int);
+    virtual unsigned select_frame(int) = 0;
     ~PRA();
 };
 
