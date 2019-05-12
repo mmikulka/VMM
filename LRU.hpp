@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "PRA.hpp"
+#include <list>
 
 class LRU : public PRA {
 public:

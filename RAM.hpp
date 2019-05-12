@@ -30,8 +30,8 @@ public:
 	//void addFrame(uint32_t *Item, unsigned FrameNum);
 	//void deleteFrame(unsigned FrameNum);
 private:
-	static std::array<char*, 256> frames;
-	static std::array<Status, 256> statuses;
+	static std::array<char*, RAM_SIZE> frames;
+	static std::array<Status, RAM_SIZE> statuses;
 };
 
 #endif /* RAM_hpp */

@@ -3,7 +3,7 @@
 //  VMM
 //
 //  Created by Matthew Mikulka on 4/28/19.
-//  Copyright � 2019 Matthew Mikulka. All rights reserved.
+//  Copyright ? 2019 Matthew Mikulka. All rights reserved.
 //
 
 #include "MemoryManager.hpp"
@@ -33,8 +33,10 @@ void MemoryManager::pageIn(Word & addr)
 		frameNum = freeFrames.front();
 		freeFrames.pop();
     } else {
-		PRA * pra;
-        if(decision == PRA_DECISION)
+		PRA_decision decision = FIFO_;
+		PRA* pra = nullptr;
+		//PRA * pra;
+        if(decision == FIFO_)
 		{
             pra = new FIFO();
         }

@@ -26,6 +26,8 @@ unsigned LRU::select_frame(int type) {
             pages that records how many times it was accessed and then
             constantly be grabbing the page with the smallest value
      */
+
+	return -1;
 }
 
 void LRU::increment_frame(int framenum) {

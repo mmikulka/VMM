@@ -21,7 +21,7 @@ public:
 	static void addFrame(const Word &pageNumber, const unsigned &FrameNumber);
 	static unsigned findFrame(const Word &);
 private:
-	static std::array <PageTableEntry, 256> pageTable;
+	static std::array <PageTableEntry, PAGE_TABLE_SIZE> pageTable;
 };
 
 #endif

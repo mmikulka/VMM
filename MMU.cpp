@@ -98,7 +98,7 @@ void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) //
 {
 	uint32_t entry;
 	PRA_decision decision = FIFO_;
-	PRA *pra;
+	PRA *pra = nullptr;
 	if (decision == FIFO_)
 	{
 		pra = new FIFO();
