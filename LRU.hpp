@@ -10,28 +10,18 @@
 #define LRU_hpp
 
 #include <stdio.h>
-#include <list>
 #include "PRA.hpp"
-#include "constVars.hpp"
 
 class LRU : public PRA {
 public:
     LRU();
-    unsigned select_frame(int);
-    void update_usage(uint32_t);
+    unsigned select_frame(int type);
     ~LRU();
-
+    
 private:
-  /*std::list <LRU_Status> used_list;
-
-  struct LRU_Status
-  {
-  public:
-    int time;
-    uint32_t frameNum;
-
-  };
-*/
+    static std::list<uint32_t> replacement_ram;
+    static std::list<uint32_t> replacement_tlb;
+    static std::list<int>      replacement_ram_counters;
 };
 
 #endif /* LRU_hpp */
