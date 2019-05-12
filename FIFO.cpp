@@ -39,6 +39,11 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
     return frame.value_;
 }
 
+void update_usage(uint32_t);
+{
+  
+}
+
 FIFO::~FIFO(){
 
 }

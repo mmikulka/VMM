@@ -11,14 +11,26 @@
 
 #include <stdio.h>
 #include "PRA.hpp"
+#include "list"
 
 class LRU : public PRA {
 public:
     LRU();
+    unsigned select_frame(int);
+    void update_usage(uint32_t);
     ~LRU();
-    
+
 private:
-    
+  list <LRU_Status> used_list;
+
+  struct LRU_Status
+  {
+  public:
+    int time;
+    uint32_t frameNum;
+
+  }
+
 };
 
 #endif /* LRU_hpp */

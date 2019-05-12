@@ -20,6 +20,7 @@ class PRA{
 public:
     PRA();
     virtual unsigned select_frame(int) = 0;
+    virtual void update_usage(uint32_t) = 0;
     ~PRA();
 };
 

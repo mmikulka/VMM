@@ -9,9 +9,20 @@
 #include "LRU.hpp"
 
 LRU::LRU() {
-    
+
+}
+
+
+unsigned select_frame(int)
+{
+
+}
+
+void update_usage(uint32_t)
+{
+
 }
 
 LRU::~LRU(){
-    
+
 }
