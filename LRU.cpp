@@ -28,6 +28,12 @@ unsigned LRU::select_frame(int type) {
      */
 }
 
+void LRU::increment_frame(int framenum) {
+    //here is where we'll increment the frame
+}
+
+
+
 LRU::~LRU(){
     
 }

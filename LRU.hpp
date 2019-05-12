@@ -16,6 +16,8 @@ class LRU : public PRA {
 public:
     LRU();
     unsigned select_frame(int type);
+    void increment_frame(int framenum);
+    void remove_frame();
     ~LRU();
     
 private:
