@@ -18,8 +18,8 @@ class PCB
 {
 public:
 	PCB();
-	static void addFrame(const Word &pageNumber, const unsigned &FrameNumber);
-	static unsigned findFrame(const Word &);
+	static void addFrame(const Word& pageNumber, const unsigned& FrameNumber);
+	static unsigned findFrame(const Word&);
 private:
 	static std::array <PageTableEntry, PAGE_TABLE_SIZE> pageTable;
 };

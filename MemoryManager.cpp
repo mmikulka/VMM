@@ -8,7 +8,7 @@
 
 #include "MemoryManager.hpp"
 
-enum PRA_decision{FIFO_, LRU_};
+enum PRA_decision { FIFO_, LRU_ };
 
 MemoryManager::MemoryManager()
 {
@@ -18,37 +18,34 @@ MemoryManager::MemoryManager()
 	}
 }
 
-void MemoryManager::pageIn(Word & addr)
+void MemoryManager::pageIn(Word& addr)
 {
 	Word pageNum = addr;
 	BackingStore back;
-	char * item;
+	char* item;
 	item = back.read(addr);
 
-    //PRA_decision decision = FIFO_;
+	//PRA_decision decision = FIFO_;
 
+	PRA *pra;
+	if (FIFO_ == PRA_DECISION)
+	{
+		pra = new FIFO();
+	}
+	else
+	{
+		pra = new LRU();
+	}
 	unsigned frameNum = 0;
 	if (freeFrames.size() > 0)
 	{
 		frameNum = freeFrames.front();
 		freeFrames.pop();
-    } else {
-		PRA_decision decision = FIFO_;
-		PRA* pra = nullptr;
-		//PRA * pra;
-        if(decision == FIFO_)
-		{
-            pra = new FIFO();
-        }
-		else
-
-		{
-            //pra = new LRU();
-    }
+	}
+	else {
 		frameNum = pra->select_frame(0);
-
-
-    }
+	}
+	pra->replace(frameNum, pageNum.value_, 0);
 	RAM ram;
 	ram.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);

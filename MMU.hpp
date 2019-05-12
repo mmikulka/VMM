@@ -13,7 +13,7 @@
 #include <array>
 #include "PCB.hpp"
 #include "constVars.hpp"
-
+#include "LRU.hpp"
 struct TLB
 {
 	std::array<uint32_t, 16> pageNum;
@@ -33,14 +33,12 @@ public:
 	int TLBAccesses();
 	int TLBFaults();
 
-
-
-	unsigned char read(Address &addr);
+	unsigned char read(Address& addr);
 
 	struct PageFault
 	{
 		PageFault();
-		PageFault(const Word &);
+		PageFault(const Word&);
 		Word pageNumber_;
 	};
 
@@ -55,6 +53,7 @@ private:
 	static int tlbAccessCount_;
 	static int tlbFaults_;
 	static TLB tlb_;
+	uint32_t tlbCounter;
 };
 
 

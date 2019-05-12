@@ -26,7 +26,7 @@ public:
 	MemoryManager();
 	void pageIn(Word& addr);
 	//void pageIn(Address & item);
-	unsigned char read(Address & pageNumber);
+	unsigned char read(Address& pageNumber);
 private:
 	static std::queue<unsigned> freeFrames;
 };

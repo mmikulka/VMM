@@ -19,34 +19,35 @@ using namespace std;
 int main()
 {
 
-		uint32_t temp = 0;
-		Address logAddr;
-		MemoryManager manager;
-		bool loopCheck = true;
-		MMU mem_man_un;
-		unsigned char data;
-		while (cin >> temp) //<addresses.txt> 2|output.txt
+	uint32_t temp = 0;
+	Address logAddr;
+	MemoryManager manager;
+	bool loopCheck = true;
+	MMU mem_man_un;
+	unsigned char data;
+	int count = 0;
+	while (cin >> temp) //<addresses.txt> 2|output.txt
+	{
+		while (loopCheck)
 		{
-			while (loopCheck)
+			try
 			{
-				try {
-					//unsigned char data;
-					logAddr.value_ = temp;
-					data = mem_man_un.read(logAddr);
-					loopCheck = false;
-				}
-				catch (MMU::PageFault p)
-				{
-					manager.pageIn(p.pageNumber_);
-				}
+				logAddr.value_ = temp;
+				data = mem_man_un.read(logAddr);
+				loopCheck = false;
 			}
-			cout << static_cast<unsigned int>(data) << '\n';
-			loopCheck = true;
+			catch (MMU::PageFault p)
+			{
+				manager.pageIn(p.pageNumber_);
+			}
 		}
+		cout << "line: " << count << '\t' <<  static_cast<unsigned int>(data) << '\n';
+		count++;
+		loopCheck = true;
+	}
 
-	//}
-	cout << "TLB accesses: "<< mem_man_un.TLBAccesses() << endl;
-	cout << "TLB Faults: "<< mem_man_un.TLBFaults() << endl;
+	cout << "TLB Hits: " << mem_man_un.TLBAccesses() << endl;
+	cout << "Page Faults: " << mem_man_un.pageFaults() << endl;
 	cout << "end of program" << endl;
 	cin.clear();
 	cin.ignore(256, '\n');

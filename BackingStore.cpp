@@ -16,10 +16,10 @@ BackingStore::BackingStore()
 
 
 
-char* BackingStore::read(Word & pageNum)
+char* BackingStore::read(Word& pageNum)
 {
 
-	char *buffer = new char[BUFFER_SIZE]; // I reccomend a smart pointer
+	char* buffer = new char[BUFFER_SIZE]; // I reccomend a smart pointer
 
 	file.seekg(static_cast<uint64_t>(pageNum.value_) * OFFSET_SIZE);
 

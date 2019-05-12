@@ -8,9 +8,9 @@
 
 #include "PRA.hpp"
 
-PRA::PRA(){
+PRA::PRA() {
 }
 
 
-PRA::~PRA(){
+PRA::~PRA() {
 }

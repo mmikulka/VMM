@@ -8,7 +8,7 @@
 #define PAGE_SIZE 255
 #define OFFSET_SIZE 256
 #define BUFFER_SIZE 256
-#define PRA_DECISION FIFO_
+#define PRA_DECISION LRU_
 #define PAGE_TABLE_SIZE 256
 
 

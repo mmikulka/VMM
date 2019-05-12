@@ -14,7 +14,7 @@ RAM::RAM()
 }
 
 
-unsigned char RAM::read(unsigned frameNum, Address &addr)
+unsigned char RAM::read(unsigned frameNum, Address& addr)
 {
 	unsigned char data;
 	statuses[frameNum].accessed = true;
@@ -24,7 +24,7 @@ unsigned char RAM::read(unsigned frameNum, Address &addr)
 	return data;
 }
 
-void RAM::addFrame( char* item, unsigned frameNum)
+void RAM::addFrame(char* item, unsigned frameNum)
 {
 	frames[frameNum] = item;
 	statuses[frameNum].accessed = false;

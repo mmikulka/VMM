@@ -44,7 +44,7 @@ Word Address::page()
 	return temp;
 }
 
-Address& Address::operator=(const Address& rhs)
+Address& Address::operator=(const Address & rhs)
 {
 	if (&rhs != this)
 	{
@@ -56,7 +56,7 @@ Address& Address::operator=(const Address& rhs)
 	}
 	return *this;
 }
-Address& Address::operator=(const Word& rhs)
+Address& Address::operator=(const Word & rhs)
 {
 	if (&rhs != this)
 	{
