@@ -10,33 +10,30 @@
 #include "constVars.hpp"
 
 LRU::LRU() {
-	for (int i = 0; i < 128; ++i)
+	for (int i = 0; i < RAM_SIZE; ++i)
 	{
-		LRU_Stat ram_stat;
-		//ram_stat.pageNum = 256;
-		time(&ram_stat.timestamp);
-		replacement_ram_time_stamps[i] = ram_stat;
+		time(&replacement_ram_time_stamps[i]);
+		replacement_ram_page_num[i] = 256;
 	}
-	for (int i = 0; i < 16; ++i)
+	for (int i = 0; i < TLB_SIZE; ++i)
 	{
-		LRU_Stat tlb_stat;
-		//tlb_stat.pageNum = 256;
-		time(&tlb_stat.timestamp);
-		replacement_tlb_counters[i] = tlb_stat;
+		time(&replacement_tlb_counters[i]);
+		replacement_tlb_index[i] = 256;
 	}
 }
 
 unsigned LRU::select_frame(int type)
 {
-	LRU_Stat stat;
-	time(&stat.timestamp);
+	time_t timeStamp;
+	uint32_t pageNum;
+	time(&timeStamp);
 	if (type == 0) //replacement Ram
 	{
 		for (int i = 0; i < RAM_SIZE; ++i)
 		{
-			if (replacement_ram_time_stamps[i].timestamp <= stat.timestamp)
+			if (replacement_ram_time_stamps[i] <= timeStamp)
 			{
-				stat = replacement_ram_time_stamps[i];
+				pageNum = replacement_ram_page_num[i];
 			}
 		}
 	}
@@ -44,27 +41,29 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < TLB_SIZE; ++i)
 		{
-			if (replacement_tlb_counters[i].timestamp <= stat.timestamp)
+			if (replacement_tlb_counters[i] <= timeStamp)
 			{
-				stat = replacement_tlb_counters[i];
+				pageNum = replacement_tlb_index[i];
 			}
 		}
 	}
 
-	return stat.pageNum;
+	return pageNum;
 }
 
 void LRU::replace(uint32_t frameNum, uint32_t pageNum, int type)
 {
 	if (type == 0)// this is for the RAM
 	{
-		replacement_ram_time_stamps[frameNum].pageNum = pageNum;
-		time(&replacement_ram_time_stamps[frameNum].timestamp);
+		time_t currentTime;
+		replacement_ram_page_num[frameNum] = pageNum;
+		time(&currentTime);
+		replacement_ram_time_stamps[frameNum] = currentTime;
 	}
 	else // for TLB
 	{
-		replacement_tlb_counters[frameNum].pageNum = pageNum;
-		time(&replacement_tlb_counters[frameNum].timestamp);
+		replacement_tlb_index[frameNum] = pageNum;
+		time(&replacement_tlb_counters[frameNum]);
 	}
 }
 
@@ -73,19 +72,16 @@ void LRU::update_usage(uint32_t frameNum, int type)
 {
 	if (type == 0) // replacement ram 
 	{
-
-		LRU_Stat ram_stat;
-		//ram_stat.pageNum = 256;
-		time(&ram_stat.timestamp);
-		replacement_ram_time_stamps[frameNum] = ram_stat;
+		time_t currentTime;
+		time(&currentTime);
+		replacement_ram_time_stamps[frameNum] = currentTime;
 
 	}
 	else
 	{
-		LRU_Stat tlb_stat;
-		//tlb_stat.pageNum = 256;
-		time(&tlb_stat.timestamp);
-		replacement_tlb_counters[frameNum] = tlb_stat;
+		time_t currentTime;
+		time(&currentTime);
+		replacement_tlb_counters[frameNum] = currentTime;
 	}
 }
 
@@ -100,5 +96,7 @@ LRU::~LRU()
 }
 
 
-std::array<LRU_Stat, RAM_SIZE> LRU::replacement_ram_time_stamps;
-std::array<LRU_Stat, TLB_SIZE> LRU::replacement_tlb_counters;
+std::array<time_t, RAM_SIZE> LRU::replacement_ram_time_stamps;
+std::array<time_t, TLB_SIZE> LRU::replacement_tlb_counters;
+std::array<uint32_t, RAM_SIZE> LRU::replacement_ram_page_num;
+std::array<uint32_t, TLB_SIZE> LRU::replacement_tlb_index;
