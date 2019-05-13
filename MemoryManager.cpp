@@ -45,7 +45,7 @@ void MemoryManager::pageIn(Word& addr)
 	else {
 		frameNum = pra->select_frame(0);
 	}
-	pra->replace(frameNum, pageNum.value_, 0);
+	LRU::replace(frameNum, pageNum.value_, 0);
 	RAM ram;
 	ram.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);

@@ -9,7 +9,13 @@
 #include "FIFO.hpp"
 
 
-FIFO::FIFO() {
+FIFO::FIFO() 
+{
+	
+}
+
+void FIFO::init()
+{
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
 		replacement_ram.push_back(i);
@@ -19,6 +25,7 @@ FIFO::FIFO() {
 		replacement_tlb.push_back(i);
 	}
 }
+
 
 unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
 {
@@ -38,7 +45,7 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
 	}
 	return frame.value_;
 }
-
+/*
 void FIFO::update_usage(uint32_t frame, int type)
 {
 
@@ -47,7 +54,7 @@ void FIFO::update_usage(uint32_t frame, int type)
 void FIFO::replace (uint32_t frame, uint32_t page, int type)
 {
 
-}
+}*/
 
 FIFO::~FIFO() {
 

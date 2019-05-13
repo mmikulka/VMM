@@ -9,7 +9,13 @@
 #include "LRU.hpp"
 #include "constVars.hpp"
 
-LRU::LRU() {
+LRU::LRU() 
+{
+	
+}
+
+void LRU::init()
+{
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
 		time(&replacement_ram_time_stamps[i]);
@@ -31,9 +37,10 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < RAM_SIZE; ++i)
 		{
-			if (replacement_ram_time_stamps[i] <= timeStamp)
+			if (replacement_ram_time_stamps[i] < timeStamp)
 			{
 				pageNum = replacement_ram_page_num[i];
+				timeStamp = replacement_ram_page_num[i];
 			}
 		}
 	}
@@ -41,9 +48,10 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < TLB_SIZE; ++i)
 		{
-			if (replacement_tlb_counters[i] <= timeStamp)
+			if (replacement_tlb_counters[i] < timeStamp)
 			{
-				pageNum = replacement_tlb_index[i];
+				pageNum = i;
+				timeStamp = replacement_tlb_counters[i];
 			}
 		}
 	}
@@ -88,11 +96,6 @@ void LRU::update_usage(uint32_t frameNum, int type)
 
 LRU::~LRU()
 {
-	for (int i = 0; i < RAM_SIZE; ++i)
-	{
-		
-	}
-
 }
 
 
