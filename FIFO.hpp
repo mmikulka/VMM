@@ -19,9 +19,8 @@ class FIFO : public PRA {
 public:
 	FIFO();
 	unsigned select_frame(int type);
-	static void init();
-	//void update_usage(uint32_t, int);
-	//void replace(uint32_t,uint32_t,int);
+	void update_usage(uint32_t, int);
+	void replace(uint32_t,uint32_t,int);
 	~FIFO();
 private:
 	static std::list<uint32_t> replacement_ram;

@@ -26,8 +26,6 @@ MMU::MMU()
 	tlb_.pageNum.fill(-1);
 	tlb_.FrameNum.fill(-1);
 	tlbCounter = 0;
-	FIFO::init();
-	LRU::init();
 }
 
 void MMU::clearTLB()
@@ -63,7 +61,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	unsigned frameNum;
 	//see if pageNum is in TLB
 	frameNum = tlb_search(pageNum);
-	++tlbAccessCount_;
+	
 	if (frameNum > RAM_CHECK_SIZE)
 	{
 		++tlbFaults_;
@@ -78,8 +76,8 @@ unsigned char MMU::read(Address & addr) // translate address to info
 		tlb_add(frameNum, pageNum.value_);//need frame number and pagenumber
 		if (LRU_ == PRA_DECISION)
 		{
-			//LRU lru;
-			LRU::update_usage(frameNum, 0); //update ram LRU array
+			LRU lru;
+			lru.update_usage(frameNum, 0); //update ram LRU array
 		}
 		++pageAccessCounts_;
 
@@ -93,14 +91,19 @@ unsigned MMU::tlb_search(Word & pageNum)
 	{
 		if (pageNum.value_ == tlb_.pageNum[i])
 		{
-			return tlb_.FrameNum[i];
+			
 			if (LRU_ == PRA_DECISION)
 			{
-				//LRU lru;
-				LRU::update_usage(i, 101);
+				LRU lru;
+				lru.update_usage(i, 101);
 			}
+			
+			return tlb_.FrameNum[i];
 		}
+		//++tlbAccessCount_;
+		//stlbAccessCount_ = 0;
 	}
+	++tlbAccessCount_;
 	return 257;
 }
 
@@ -123,17 +126,13 @@ void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) //
 	{
 		entry = pra->select_frame(101);
 	}
-	else
-	{
-		++tlbCounter;
-	}
 
 	tlb_.FrameNum[entry] = frameNum;
 	tlb_.pageNum[entry] = pageNum;
 
 	if (LRU_ == PRA_DECISION)
 	{
-		LRU::replace(entry, pageNum, 101);
+		pra->replace(entry, pageNum, 101);
 	}
 }
 

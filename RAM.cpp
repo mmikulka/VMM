@@ -26,9 +26,12 @@ unsigned char RAM::read(unsigned frameNum, Address& addr)
 
 void RAM::addFrame(char* item, unsigned frameNum)
 {
-	frames[frameNum] = item;
-	statuses[frameNum].accessed = false;
-	statuses[frameNum].dirty = false;
+//	if (frameNum < 256)
+//	{
+		frames[frameNum] = item;
+		statuses[frameNum].accessed = false;
+		statuses[frameNum].dirty = false;
+//	}
 }
 
 /*void RAM::deleteFrame(unsigned FrameNum)

@@ -9,23 +9,17 @@
 #include "LRU.hpp"
 #include "constVars.hpp"
 
-LRU::LRU() 
-{
-	
-}
-
-void LRU::init()
-{
-	for (int i = 0; i < RAM_SIZE; ++i)
-	{
-		time(&replacement_ram_time_stamps[i]);
-		replacement_ram_page_num[i] = 256;
-	}
-	for (int i = 0; i < TLB_SIZE; ++i)
-	{
-		time(&replacement_tlb_counters[i]);
-		replacement_tlb_index[i] = 256;
-	}
+LRU::LRU() {
+	//for (int i = 0; i < RAM_SIZE; ++i)
+	//{
+	//	time(&replacement_ram_time_stamps[i]);
+	//	replacement_ram_page_num[i] = 256;
+	//}
+	//for (int i = 0; i < TLB_SIZE; ++i)
+	//{
+	//	time(&replacement_tlb_counters[i]);
+	//	replacement_tlb_index[i] = 256;
+	//}
 }
 
 unsigned LRU::select_frame(int type)
@@ -37,10 +31,10 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < RAM_SIZE; ++i)
 		{
-			if (replacement_ram_time_stamps[i] < timeStamp)
+			if (replacement_ram_time_stamps[i] <= timeStamp)
 			{
 				pageNum = replacement_ram_page_num[i];
-				timeStamp = replacement_ram_page_num[i];
+				timeStamp = replacement_ram_time_stamps[i];
 			}
 		}
 	}
@@ -48,10 +42,9 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < TLB_SIZE; ++i)
 		{
-			if (replacement_tlb_counters[i] < timeStamp)
+			if (replacement_tlb_counters[i] <= timeStamp)
 			{
-				pageNum = i;
-				timeStamp = replacement_tlb_counters[i];
+				pageNum = replacement_tlb_index[i];
 			}
 		}
 	}
@@ -63,10 +56,13 @@ void LRU::replace(uint32_t frameNum, uint32_t pageNum, int type)
 {
 	if (type == 0)// this is for the RAM
 	{
-		time_t currentTime;
-		replacement_ram_page_num[frameNum] = pageNum;
-		time(&currentTime);
-		replacement_ram_time_stamps[frameNum] = currentTime;
+		//if (frameNum <256)
+		//{
+			time_t currentTime;
+		//	replacement_ram_page_num[frameNum] = pageNum;
+			time(&currentTime);
+			replacement_ram_time_stamps[frameNum] = currentTime;
+		//}
 	}
 	else // for TLB
 	{
@@ -96,6 +92,11 @@ void LRU::update_usage(uint32_t frameNum, int type)
 
 LRU::~LRU()
 {
+	/*for (int i = 0; i < RAM_SIZE; ++i)
+	{
+		
+	}*/
+
 }
 
 

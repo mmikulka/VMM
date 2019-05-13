@@ -41,8 +41,8 @@ int main()
 				manager.pageIn(p.pageNumber_);
 			}
 		}
-		cout << "line: " << count << '\t' <<  static_cast<unsigned int>(data) << '\n';
 		count++;
+		cout << hex<< static_cast<unsigned int>(data) << endl; 
 		loopCheck = true;
 	}
 
