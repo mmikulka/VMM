@@ -10,7 +10,7 @@
 
 enum PRA_decision { FIFO_, LRU_ };
 
-MemoryManager::MemoryManager() // constructor 
+MemoryManager::MemoryManager() // constructor
 {
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
@@ -28,7 +28,7 @@ void MemoryManager::pageIn(Word& addr) // puting the page in mem man
 	//PRA_decision decision = FIFO_;
 
 	PRA *pra;
-	if (FIFO_ == PRA_DECISION) // this is the thing tHAT TELLS US WHAT THE DECISIONS ARE	 
+	if (FIFO_ == PRA_DECISION) // this is the thing tHAT TELLS US WHAT THE DECISIONS ARE
 	{
 		pra = new FIFO();
 	}
@@ -37,7 +37,7 @@ void MemoryManager::pageIn(Word& addr) // puting the page in mem man
 		pra = new LRU();
 	}
 	unsigned frameNum = 0;
-	if (freeFrames.size() > 0) 
+	if (freeFrames.size() > 0)
 	{
 		frameNum = freeFrames.front(); // POP THE FREE RFAMES
 		freeFrames.pop();
@@ -45,7 +45,7 @@ void MemoryManager::pageIn(Word& addr) // puting the page in mem man
 	else {
 		frameNum = pra->select_frame(0);
 	}
-	pra->replace(frameNum, pageNum.value_, 0); // this is where we call relpace 
+	pra->replace(frameNum, 0); // this is where we call relpace 
 	MMU mmu;
 	mmu.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);

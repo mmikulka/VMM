@@ -29,9 +29,9 @@ unsigned LRU::select_frame(int type)
 	time(&timeStamp);
 	if (type == 0) //replacement Ram
 	{
-		for (int i = 0; i < RAM_SIZE; ++i) 
+		for (int i = 0; i < RAM_SIZE; ++i)
 		{
-			if (replacement_ram_time_stamps[i] <= timeStamp) // we check the timestamps 
+			if (replacement_ram_time_stamps[i] <= timeStamp) // we check the timestamps
 			{
 				pageNum = replacement_ram_page_num[i];
 				timeStamp = replacement_ram_time_stamps[i];
@@ -42,7 +42,7 @@ unsigned LRU::select_frame(int type)
 	{
 		for (int i = 0; i < TLB_SIZE; ++i)
 		{
-			if (replacement_tlb_counters[i] <= timeStamp) // we check the timestamps 
+			if (replacement_tlb_counters[i] <= timeStamp) // we check the timestamps
 			{
 				pageNum = replacement_tlb_index[i];
 			}
@@ -52,7 +52,7 @@ unsigned LRU::select_frame(int type)
 	return pageNum;
 }
 
-void LRU::replace(uint32_t frameNum, uint32_t pageNum, int type)
+void LRU::replace(uint32_t frameNum, int type)
 {
 	if (type == 0)// this is for the RAM
 	{
@@ -74,18 +74,18 @@ void LRU::replace(uint32_t frameNum, uint32_t pageNum, int type)
 
 void LRU::update_usage(uint32_t frameNum, int type)
 {
-	if (type == 0) // replacement ram 
+	if (type == 0) // replacement ram
 	{
 		time_t currentTime;
 		time(&currentTime);
-		replacement_ram_time_stamps[frameNum] = currentTime; // this function updates the usage 
+		replacement_ram_time_stamps[frameNum] = currentTime; // this function updates the usage
 
 	}
 	else
 	{
 		time_t currentTime;
 		time(&currentTime);
-		replacement_tlb_counters[frameNum] = currentTime; // this function updates the usage 
+		replacement_tlb_counters[frameNum] = currentTime; // this function updates the usage
 	}
 }
 
@@ -94,7 +94,7 @@ LRU::~LRU()
 {
 	/*for (int i = 0; i < RAM_SIZE; ++i)
 	{
-		
+
 	}*/
 
 }

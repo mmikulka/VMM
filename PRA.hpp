@@ -22,7 +22,7 @@ public:
 	PRA();
 	virtual unsigned select_frame(int) = 0;
 	virtual void update_usage(uint32_t, int) = 0;
-	virtual void replace(uint32_t, uint32_t, int) = 0;
+	virtual void replace(uint32_t, int) = 0;
 	~PRA();
 };
 

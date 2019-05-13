@@ -19,10 +19,10 @@ enum PRA_decision { FIFO_, LRU_ };
 
 MMU::MMU()
 {
-	
+
 }
 
-void MMU::instance() // this is the instance of it 
+void MMU::instance() // this is the instance of it
 {
 	/*pageAccessCounts_ = 0;
 	pageInFaults_ = 0;
@@ -66,7 +66,7 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	unsigned frameNum;
 	//see if pageNum is in TLB
 	frameNum = tlb_search(pageNum);
-	
+
 	if (frameNum > RAM_CHECK_SIZE)
 	{
 
@@ -100,25 +100,25 @@ void MMU::addFrame(char* item, uint32_t frameNum) // this affs the frame
 		ram.addFrame(item, frameNum);
 	}
 
-unsigned MMU::tlb_search(Word & pageNum) // does tlb search 
+unsigned MMU::tlb_search(Word & pageNum) // does tlb search
 {
 	for (int i = 0; i < TLB_SIZE; ++i)
 	{
 		if (pageNum.value_ == tlb_.pageNum[i])
 		{
-			
+
 			if (LRU_ == PRA_DECISION)
 			{
 				LRU lru;
 				lru.update_usage(i, 101);
 			}
-			
+
 			return tlb_.FrameNum[i];
 		}
 		++tlbAccessCount_;
 		//stlbAccessCount_ = 0;
 	}
-	
+
 	return 257;
 }
 
@@ -147,7 +147,7 @@ void MMU::tlb_add(uint32_t frameNum, uint32_t pageNum) //
 
 	if (LRU_ == PRA_DECISION)
 	{
-		pra->replace(entry, pageNum, 101);
+		pra->replace(entry, 101);
 	}
 }
 

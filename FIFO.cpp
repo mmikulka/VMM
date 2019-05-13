@@ -12,7 +12,7 @@
 FIFO::FIFO() {
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
-		replacement_ram.push_back(i); // pushing back into our replacement algorithm 
+		replacement_ram.push_back(i); // pushing back into our replacement algorithm
 	}
 	for (int i = 0; i < TLB_SIZE; ++i)
 	{
@@ -43,15 +43,14 @@ void FIFO::update_usage(uint32_t frame, int type)
 {
 	(void)type;
 	(void)frame;
-	// virtual funcitons used in pra 
+	// virtual funcitons used in pra
 }
 
-void FIFO::replace (uint32_t frame, uint32_t page, int type)
+void FIFO::replace (uint32_t frame, int type)
 {
 	(void)frame;
-	(void)page;
 	(void)type;
-	// virtual funcitons used in pra 
+	// virtual funcitons used in pra
 }
 
 FIFO::~FIFO() {

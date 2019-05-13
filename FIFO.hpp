@@ -20,7 +20,7 @@ public:
 	FIFO();
 	unsigned select_frame(int type);
 	void update_usage(uint32_t, int);
-	void replace(uint32_t,uint32_t,int);
+	void replace(uint32_t, int);
 	~FIFO();
 private:
 	static std::list<uint32_t> replacement_ram;

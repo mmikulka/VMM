@@ -29,7 +29,7 @@ public:
 	unsigned select_frame(int type);
 	void remove_frame();
 	void update_usage(uint32_t, int type);
-    void replace (uint32_t, uint32_t, int);
+    void replace (uint32_t, int);
 	~LRU();
 
 private:
