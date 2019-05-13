@@ -12,7 +12,7 @@
 FIFO::FIFO() {
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
-		replacement_ram.push_back(i);
+		replacement_ram.push_back(i); // pushing back into our replacement algorithm 
 	}
 	for (int i = 0; i < TLB_SIZE; ++i)
 	{
@@ -20,14 +20,14 @@ FIFO::FIFO() {
 	}
 }
 
-unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
+unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM // finding a frame for FIFO
 {
 	Word frame;
 	if (type == 0)
 	{
 		frame.value_ = replacement_ram.front();
 		replacement_ram.pop_front();
-		replacement_ram.push_back(frame.value_);
+		replacement_ram.push_back(frame.value_); // doing the FIFO part
 
 	}
 	else
@@ -41,12 +41,17 @@ unsigned FIFO::select_frame(int type) //1 for TLB; 0 for RAM
 
 void FIFO::update_usage(uint32_t frame, int type)
 {
-
+	(void)type;
+	(void)frame;
+	// virtual funcitons used in pra 
 }
 
 void FIFO::replace (uint32_t frame, uint32_t page, int type)
 {
-
+	(void)frame;
+	(void)page;
+	(void)type;
+	// virtual funcitons used in pra 
 }
 
 FIFO::~FIFO() {

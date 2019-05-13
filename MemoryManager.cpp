@@ -10,7 +10,7 @@
 
 enum PRA_decision { FIFO_, LRU_ };
 
-MemoryManager::MemoryManager()
+MemoryManager::MemoryManager() // constructor 
 {
 	for (int i = 0; i < RAM_SIZE; ++i)
 	{
@@ -18,7 +18,7 @@ MemoryManager::MemoryManager()
 	}
 }
 
-void MemoryManager::pageIn(Word& addr)
+void MemoryManager::pageIn(Word& addr) // puting the page in mem man
 {
 	Word pageNum = addr;
 	BackingStore back;
@@ -28,7 +28,7 @@ void MemoryManager::pageIn(Word& addr)
 	//PRA_decision decision = FIFO_;
 
 	PRA *pra;
-	if (FIFO_ == PRA_DECISION)
+	if (FIFO_ == PRA_DECISION) // this is the thing tHAT TELLS US WHAT THE DECISIONS ARE	 
 	{
 		pra = new FIFO();
 	}
@@ -37,17 +37,17 @@ void MemoryManager::pageIn(Word& addr)
 		pra = new LRU();
 	}
 	unsigned frameNum = 0;
-	if (freeFrames.size() > 0)
+	if (freeFrames.size() > 0) 
 	{
-		frameNum = freeFrames.front();
+		frameNum = freeFrames.front(); // POP THE FREE RFAMES
 		freeFrames.pop();
 	}
 	else {
 		frameNum = pra->select_frame(0);
 	}
-	pra->replace(frameNum, pageNum.value_, 0);
-	RAM ram;
-	ram.addFrame(item, frameNum);
+	pra->replace(frameNum, pageNum.value_, 0); // this is where we call relpace 
+	MMU mmu;
+	mmu.addFrame(item, frameNum);
 	PCB::addFrame(pageNum, frameNum);
 }
 
@@ -69,7 +69,7 @@ void MemoryManager::pageIn(Word& addr)
 //	}
 //}
 
-std::queue<unsigned> MemoryManager::freeFrames;
+std::queue<unsigned> MemoryManager::freeFrames; // this is the free fames queue
 
 /*
 TODO:

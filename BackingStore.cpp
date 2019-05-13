@@ -16,14 +16,14 @@ BackingStore::BackingStore()
 
 
 
-char* BackingStore::read(Word& pageNum)
+char* BackingStore::read(Word& pageNum) // reads from the Backing Store
 {
 
 	char* buffer = new char[BUFFER_SIZE]; // I reccomend a smart pointer
 
 	file.seekg(static_cast<uint64_t>(pageNum.value_) * OFFSET_SIZE);
 
-	file.read(buffer, PAGE_SIZE);
+	file.read(buffer, PAGE_SIZE); 
 
 	//std::cout << static_cast<int>(buffer[1]) << std::endl;
 
@@ -32,5 +32,5 @@ char* BackingStore::read(Word& pageNum)
 
 BackingStore::~BackingStore()
 {
-	file.close();
+	file.close(); // close the file 
 }

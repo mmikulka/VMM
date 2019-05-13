@@ -10,7 +10,7 @@
 struct PageTableEntry
 {
 public:
-	unsigned frameNumber;
+	unsigned frameNumber = 0;
 	bool valid = false;
 };
 

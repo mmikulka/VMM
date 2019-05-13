@@ -8,7 +8,7 @@
 
 #include "PRA.hpp"
 
-PRA::PRA() {
+PRA::PRA() { // this is a virtual class basically
 }
 
 

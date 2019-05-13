@@ -19,39 +19,44 @@ enum PRA_decision { FIFO_, LRU_ };
 
 MMU::MMU()
 {
-	pageAccessCounts_ = 0;
-	pageInFaults_ = 0;
-	tlbAccessCount_ = 0;
-	tlbFaults_ = 0;
-	tlb_.pageNum.fill(-1);
-	tlb_.FrameNum.fill(-1);
-	tlbCounter = 0;
+	
 }
 
-void MMU::clearTLB()
+void MMU::instance() // this is the instance of it 
+{
+	/*pageAccessCounts_ = 0;
+	pageInFaults_ = 0;
+	tlbAccessCount_ = 0;
+	tlbHits_ = 0;*/
+	tlb_.pageNum.fill(-1);
+	tlb_.FrameNum.fill(-1);
+	//tlbCounter = 0;
+}
+
+void MMU::clearTLB() // this clears the tlb
 {
 	tlb_.pageNum.fill(-1);
 	tlb_.FrameNum.fill(-1);
 }
 
-int MMU::pageAccesses()
+int MMU::pageAccesses() // this accesses the pages
 {
 	return pageAccessCounts_;
 }
 
-int MMU::pageFaults()
+int MMU::pageFaults() // this prints the number of page faults
 {
 	return pageInFaults_;
 }
 
-int MMU::TLBAccesses()
+int MMU::TLBAccesses() // this tells us the tlb accesss number
 {
 	return tlbAccessCount_;
 }
 
-int MMU::TLBFaults()
+int MMU::TLBHits() // tells us the number of tlb hits
 {
-	return tlbFaults_;
+	return tlbHits_;
 }
 
 unsigned char MMU::read(Address & addr) // translate address to info
@@ -64,10 +69,13 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	
 	if (frameNum > RAM_CHECK_SIZE)
 	{
-		++tlbFaults_;
+
 		frameNum = PCB::findFrame(pageNum);
 	}
-
+	else
+	{
+		++tlbHits_;
+	}
 	if (frameNum > RAM_CHECK_SIZE)
 		throw PageFault(pageNum);
 	else if (frameNum <= RAM_CHECK_SIZE)
@@ -85,7 +93,14 @@ unsigned char MMU::read(Address & addr) // translate address to info
 	return data;
 }
 
-unsigned MMU::tlb_search(Word & pageNum)
+
+void MMU::addFrame(char* item, uint32_t frameNum) // this affs the frame
+	{
+		RAM ram;
+		ram.addFrame(item, frameNum);
+	}
+
+unsigned MMU::tlb_search(Word & pageNum) // does tlb search 
 {
 	for (int i = 0; i < TLB_SIZE; ++i)
 	{
@@ -100,10 +115,10 @@ unsigned MMU::tlb_search(Word & pageNum)
 			
 			return tlb_.FrameNum[i];
 		}
-		//++tlbAccessCount_;
+		++tlbAccessCount_;
 		//stlbAccessCount_ = 0;
 	}
-	++tlbAccessCount_;
+	
 	return 257;
 }
 
@@ -145,5 +160,6 @@ MMU::PageFault::PageFault(const Word & pn)
 int MMU::pageAccessCounts_ = 0;
 int MMU::pageInFaults_ = 0;
 int MMU::tlbAccessCount_ = 0;
-int MMU::tlbFaults_ = 0;
+int MMU::tlbHits_ = 0;
 TLB MMU::tlb_;
+uint32_t MMU::tlbCounter = 0;

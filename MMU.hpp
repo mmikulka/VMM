@@ -27,11 +27,13 @@ public:
 	MMU();//=delete;
 	//MMU(MMU&); // = delete;
 	//MMU instance();
+	void instance();
 	void clearTLB();
+	void addFrame(char* item, uint32_t frameNum);
 	int pageAccesses();
 	int pageFaults();
 	int TLBAccesses();
-	int TLBFaults();
+	int TLBHits();
 
 	unsigned char read(Address& addr);
 
@@ -51,9 +53,9 @@ private:
 	static int pageAccessCounts_;
 	static int pageInFaults_;
 	static int tlbAccessCount_;
-	static int tlbFaults_;
+	static int tlbHits_;
 	static TLB tlb_;
-	uint32_t tlbCounter;
+	static uint32_t tlbCounter;
 };
 
 
